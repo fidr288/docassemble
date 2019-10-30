@@ -1,0 +1,134 @@
+---
+default language: zh
+---
+metadata:
+  title: Ear syringe eng
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Name
+fields:
+  - Surname: surname
+  - Name: name
+  
+---
+mandatory: True
+
+question: |
+  Information and Consent for Ear Syringing
+subquestion: |
+  The Doctor has requested that you have your ear/s syringed. As with any medical procedure there are risks associated with this. Even though we do everything possible to minimise these risks it is important that you read and understand the following information :  
+  
+  Potential problems can be:
+  
+  * Dizziness or Vertigo (head spinning)
+  * Otitis externa (infection of ear canal)
+  * Perforated tympanic membrane (ruptured ear drums) which can result in deafness.
+  * Pain in the ear.
+  
+field: read_complications
+---
+mandatory: True
+
+question: |
+  To minimise the risk of perforation please inform the nurse if you have had any of the following problems :
+subquestion: |
+  * Upper respiratory tract infection (head cold)
+  * History of ear surgery or disease
+  * Insertion of grommets
+  * History of previous perforation (rupture) of the ear drums
+  * Otitis externa / Otitis media – infection of ear canal / middle ear
+  * Affected ear is the only hearing ear
+  * Prone to dizziness or vertigo
+  
+  If there is anything you do not understand please ask the Doctor or Nurse.
+
+
+field: read_conditions
+---
+mandatory: True
+
+question: |
+  Having read the information provided, and having it explained to me, I consent to have my ear/s syringed.
+fields:
+  - I agree: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you agree.")
+
+---
+mandatory: True
+question: |
+  Sign your name
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff responsible for consent
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+ 
+---
+mandatory: True
+question: Your document is ready.
+attachment:
+  - name: ear syringe consent english
+    filename: ${surname}-${name}-syring_consent_eng-${format_date(today(), format='dd-MM-yyyy')}
+    description: |
+     ear syringe consent english
+    content: |  
+     [BORDER]
+     Information and Consent for Ear Syringing
+     
+     The Doctor has requested that you have your ear/s syringed. As with any medical procedure there are risks associated with this. Even though we do everything possible to minimise these risks it is important that you read and understand the following information :  
+     
+     Potential problems can be:
+     
+     * Dizziness or Vertigo (head spinning)
+     * Otitis externa (infection of ear canal)
+     * Perforated tympanic membrane (ruptured ear drums) which can result in deafness.
+     * Pain in the ear.
+     
+     To minimise the risk of perforation please inform the nurse if you have had any of the following problems :
+
+     * Upper respiratory tract infection (head cold)
+     * History of ear surgery or disease
+     * Insertion of grommets
+     * History of previous perforation (rupture) of the ear drums
+     * Otitis externa / Otitis media – infection of ear canal / middle ear
+     * Affected ear is the only hearing ear
+     * Prone to dizziness or vertigo
+     
+     If there is anything you do not understand please ask the Doctor or Nurse.
+      
+            
+     ${signature}
+      
+     Signature
+     
+     Name:${name}${surname} [BR]
+     ${today()}
+      
+     Staff responsible for consent: ${staff}
+     
+buttons:
+  - Exit: exit

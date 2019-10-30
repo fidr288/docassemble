@@ -1,0 +1,285 @@
+metadata:
+  title: Enrolment form
+  short title: 
+  comment: dmc enrolment form
+---
+mandatory: True
+
+question: |
+  Name 姓名
+fields:
+  - Surname 姓: surname
+  - Name 名: name
+  
+---
+mandatory: True
+
+question: |
+  Birthdate 出生日期
+fields:
+  - Day 日: day
+    datatype: integer
+  - Month 月: month
+    datatype: integer
+  - Year 年: year
+    datatype: integer
+
+---
+mandatory: True
+question: |
+
+fields:
+  - Gender 性别: gender
+    input type: radio
+    choices:
+      - male 男: male
+      - female 女: female
+---
+mandatory: True
+
+question: |
+
+fields:
+  - Place of birth 出生地: place_of_birth
+---
+mandatory: True
+question: |
+
+fields:
+  - Address 地址: address
+---
+mandatory: True
+question: |
+  Contacts 联络资料
+fields:
+  - mobile 移动电话: mobile_phone
+    datatype: integer
+    required: False
+  - home phone 家电话: home_phone
+    datatype: integer
+    required: False
+  - work phone 工作电话: work_phone
+    datatype: integer
+    required: False
+  - email 电子邮件: email
+    datatype: email
+    required: False
+---
+mandatory: True
+question: |
+  Next of kin 近亲联络
+fields:
+  - Name 姓名: nok_name
+    required: False
+  - Relationship 关系: nok_relationship
+    required: False
+  - Phone电话: nok_phone
+    datatype: integer
+    required: False
+---
+mandatory: True
+question: |
+  Ethnicty 种族 
+fields: 
+  - Ethnicity: ethnicity
+    input type: radio
+    required: False
+    choices:
+      - NZ european
+      - Maori
+      - Chinese 华人
+      - Samoan
+      - Tongan
+
+  - other / additional: other_ethnicity
+    required: False
+    
+---
+mandatory: True
+question: |
+  I authorise the transfer of my medical records from the doctor I previously attended. I understand that my name will be removed from the register of my previous doctor.
+  
+  本人授权从以前医生转移我的病历。我知道我的名字将会从以前医生的登记里被删除。
+fields: 
+  - : transfer
+    input type: radio
+    choices:
+      - Yes
+      - No
+      - Not applicable
+
+
+  - previous GP name: prev_gp
+    required: False
+  - Previous GP address: prev_gp_add
+    required: False
+
+
+     
+---
+mandatory: True
+question: |
+  I intend to use Dominion Medical Centre as my regular and ongoing provider of general practice/GP/First Level primary healthcare services.I am eligible to enrol because I meet one of the following criteria:
+  
+  我已符合一项下列所需的条件:
+fields: 
+  - : eligible
+    input type: radio
+    choices:
+      - I am a New Zealand citizen.[BR]我是新西兰公民。
+      - I hold a residence visa or permanent resident visa.[BR]本人持有居留证，或持有有效回国居民签证。
+      - I am an Australian citizen or Australian permanent resident AND able to show that my total stay in New Zealand is or will be for at least 2 consecutive years.[BR]本人是一名澳大利亚公民并能够证明我将会或已经在新西兰逗留至少2年。
+      - I have a work visa/permit and can show that I am able to be in New Zealand for at least 2 years (pervious permits included).[BR]本人持有工作签证或国际学生签证并能够证明我能在新西兰逗留至少2年。
+      - I am an interim visa holder who was eligible immediately before my interim visa started.[BR]我是临时签证持有人，在我的临时签证开始之前有资格
+      - I am under 18 years and in the care and control of a parent/legal guardian/adopting parent who meets one criterion above.[BR]我未满18岁，由一名符合上述条件的父母/法定监护人/收养父母照顾和控制。
+      - I am a refugee or protected person OR in the process of applying for, or appealing refugee or protection status, OR a victim or suspected victim of people trafficking.[BR]我是难民或在申请难民身份过程中。
+      - I am 18 or 19 yrs old and can demonstrate that, on the 15 April 2011, I was the dependant of an eligible work permit holder.[BR]我今年18岁或19岁，可以证明我在2011年4月15日是符合条件的工作许可证持有人的家属
+      - I am a NZ Aid Programme student studying in NZ and receiving Official Development Assistance funding(or their partner or child under 18 yrs old).[BR]我是在新西兰学习并获得官方发展援助资金的NZ Aid Programme学生（或其伴侣或18岁以下的孩子）
+      - I am participating in the Ministry of Education Foreign Language Teaching Assistantship scheme.[BR]我正在参加教育部外语教学助学金计划
+      - I am a commonwealth Scholarship holder studying in NZ and receiving funding from a NZ university under the Commonwealth Scholarship and Fellowship Fund.[BR]我是在纽西兰学习并获得英联邦奖学金和奖学金基金资助的新西兰大学资助的英联邦奖学金持有人。
+ 
+
+---
+mandatory: True
+question: |
+  I choose to enroll with Dominion Medical Centre as my regular and ongoing provider of primary health care services. I understand that by enrolling with Dominion Medical Centre I will be enrolled with Auckland PHO, the Primary Health Organisation (PHO) this Medical Centre belongs to, and my name, address and other identification details will be included on both the practice and the PHO enrolment register. I understand that if I visit another Medical Centre where I am not enrolled I may be charged a higher fee. I have been given information about the benefits and implications of enrolment with the PHO, and their contact details. 
+  
+  我知道注册后，我会使用这家诊所作为基本的医疗服务。我知道我只能在一家诊所注册。我知道我的注册或联系资料会被提交到 Auckland PHO ，奥克兰地区卫生局和卫生部。我明白如果我去见另一位医生，该诊所会通知我们诊症日期，但是诊症的内容不会被披露。我/我们可以随时取消在这家诊所的注册。诊所可以在必要的时刻，将病历直接转到有关专业医疗人士。
+fields:
+  - I agree 我同意: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you agree to the terms of service.")
+
+---
+mandatory: True
+question: |
+  Sign your name 签名
+  
+subquestion: |
+  I have read and I agree with the Health Information Privacy Statement.
+  
+  我已阅读并同意健康信息隐私声明。
+  
+  
+  
+  
+  
+  
+
+  
+signature: signature
+
+
+---
+mandatory: True
+question: |
+  Name of signatory if applicant is under 16
+  
+  签字人姓名(如果申请人未满16岁)
+fields:
+  - Name: auth_name
+    required: False
+  - Relationship 关系: auth_relationship
+    required: False
+---
+mandatory: True
+question: |
+ You have completed enrolment. Please hand back to receptionist. 
+
+ 您已完成注册。 请交给接待员。
+subquestion: |
+
+field: user_complete
+---
+mandatory: True
+
+question: |
+ Staff take picture of passport with photo
+fields:
+  - Picture: passport
+    datatype: environment
+---
+mandatory: True
+
+question: |
+ Staff take picture of visa
+fields:
+  - Picture: visa
+    datatype: environment
+
+---
+mandatory: True
+question: Your document is ready.
+attachment:
+  - name: DMC enrolment form
+    filename: ${surname}-${name}-${day}-${month}-${year}
+    description: |
+     DMC enrolment form
+    content: |
+     [BORDER]
+     **Dominion Medical Centre Enrolment form**[BR] 
+     349 Mt Albert Rd, Mt Roskill, Auckland 1041.[BR]
+     ph:6204986,fax:6201349, email: contact@dominionmedical.co.nz
+      
+     -----------------------------------------
+                  
+     **Surname: ** ${surname}    **Name: ** ${name}   **Gender: ** ${gender}
+      
+     **DOB: ** ${day}/${month}/${year}    **Place of birth: ** ${place_of_birth} **ethnicity: ** ${ethnicity}, ${other_ethnicity} 
+     
+     **Address: ** ${address}
+      
+     **mobile: **${mobile_phone}    **home: **${home_phone}    **work: **${work_phone}
+     
+     **email: **${email} 
+      
+     -----------------------------------------
+     
+     **Next of kin:**
+     
+     Name: ${nok_name}  Relationship: ${nok_relationship}  Phone: ${nok_phone}
+     
+     -----------------------------------------
+     
+     **Eligibility:**
+      
+     ${eligible}
+      
+     -----------------------------------------
+      
+     I authorise the transfer of my medical records from the doctor I previously attended. I understand that my name will be removed from the register of my previous doctor.
+        
+     本人授權從以前醫生轉移我的病歷。我知道我的名字將會從以前醫生的登記裡被刪除。
+     
+     agree: ${transfer}
+      
+     Previous GP: ${prev_gp}  Address: ${prev_gp_add}
+     
+     -----------------------------------------
+     
+     
+     
+     
+     
+     
+     
+     ${signature}  
+     
+     Signature
+     
+     Name: ${name}  ${surname}
+     
+     ${ today() }
+     
+     -----------------------------
+     
+     Authority name: ${auth_name}      Relationship: ${auth_relationship}
+     [PAGEBREAK]
+     ${passport}
+     [PAGEBREAK]
+     ${visa}
+     
+
+      

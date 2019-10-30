@@ -1,0 +1,130 @@
+---
+default language: zh
+---
+metadata:
+  title: Ear syringe Chi
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Name 姓名
+fields:
+  - Surname 姓: surname
+  - Name 名: name
+  
+---
+mandatory: True
+
+question: |
+  外耳道冲洗法资料-知情同意
+subquestion: |
+  外耳道冲洗法是一种很常用的方法从耳道清除耳垢。使用控制压力注射器约会温水到影响的耳朵使耳垢，并冲毁。这是方便，有效和安全的技术。在此医疗诊所的医生和护士都受过适当训练，也进行过许多外耳道冲洗。但任何医疗过程都潜在某程度的风险，我们要求您阅读这份资料让您充分了解可能出现的问题和风险后，才能继续。
+  
+  你要知道：
+  
+  * 医疗过程可以会感到不舒服。把水约会耳道似乎是不常见的情况。你可能会感到恶心，有时可能会出现头晕（眩晕）或咳嗽，但幸好不是常见的。
+  * 如果您感到任何疼痛，您应该立即告知医生/护士，他们会决定应否继续此治疗方法。
+  * 该治疗方法不一定会一次便能清除所有耳垢。我们可能需要你回来再做一遍，少数情况如果还是不成功，可能需要进一步转介到专科。
+  * 水汪汪的感觉和听力下降可能会持续到耳垢被完全清除掉。
+  * 轻微的耳道鼓膜损伤和/或皮肤瘀伤可能发生，通常会很快痊愈。外耳道冲洗后滴耳液可舒缓不适。
+  * 在极少数情况下该治疗方法，可能会导致更严重的伤害，水的压力可以把耳道鼓膜刺穿（也被称为鼓膜穿孔）。这既不是一个预期或理想的结果，但必须接受这是该治疗方法的一个小的风险。疼痛和听力损失将必需进一步的治疗。虽然耳膜通常会自行痊愈。
+ 
+field: read_complications
+---
+mandatory: True
+
+question: |
+  为了尽量减少鼓膜穿孔的风险，如果您有任何的以下杂质请告知护士：
+subquestion: |
+  * 上呼吸道感染（感冒）
+  * 耳部手术病历
+  * 垫圈插入过耳膜
+  * 鼓膜穿孔病历
+  * 外耳炎病历
+  * 耳部感染病历
+  * 患耳是唯一有听听力的耳朵
+  替代耳道冲洗法是微植入治疗方法。本诊所不能进行这种治疗方法，但我们可以转介您到别的医疗诊所。
+
+field: read_conditions
+---
+mandatory: True
+
+question: |
+  医生已经解释所有相关信息。我完全理解治疗方法和程序和所涉及的风险。[BR]
+  我对医生的解释感到满意，并且我完全理解这一过程序，以及可能的风险和副作用。
+fields:
+  - I agree 我同意: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you agree.")
+
+---
+mandatory: True
+question: |
+  Sign your name 签名
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff responsible for consent
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+ 
+---
+mandatory: True
+question: Your document is ready.
+attachment:
+  - name: DMC enrolment form
+    filename: ${surname}-${name}-syring_consent-${format_date(today(), format='dd-MM-yyyy')}
+    description: |
+     ear syringe consent chinese
+    content: |         
+     外耳道冲洗法资料-知情同意  
+      
+     外耳道冲洗法是一种很常用的方法从耳道清除耳垢。使用控制压力注射器约会温水到影响的耳 朵使耳垢垢，并冲毁。这是方便，有效和安全的技术。在此医疗诊所的医生和护士都受过适当训练，也进行过许多外耳道冲洗。但任何医疗过程都潜在某程度的风险，我们要求您阅读这份资料让您充分了解可能出现的问题和风险后，才能继续。
+      
+     你要知道：
+      
+     * 医疗过程可以会感到不舒服。把水约会耳道似乎是不常见的情况。你可能会感到恶心，有时可能会出现头晕（眩晕）或咳嗽，但幸好不是常见的。
+     * 如果您感到任何疼痛，您应该立即告知医生/护士，他们会决定应否继续此治疗方法。
+     * 该治疗方法不一定会一次便能清除所有耳垢。我们可能需要你回来再做一遍，少数情况如果还是不成功，可能需要进一步转介到专科。
+     * 水汪汪的感觉和听力下降可能会持续到耳垢被完全清除掉。
+     * 轻微的耳道鼓膜损伤和/或皮肤瘀伤可能发生，通常会很快痊愈。外耳道冲洗后滴耳液可舒缓不适。
+     * 在极少数情况下该治疗方法，可能会导致更严重的伤害，水的压力可以把耳道鼓膜刺穿（也被称为鼓膜穿孔）。这既不是一个预期或理想的结果，但必须接受这是该治疗方法的一个小的风险。疼痛和听力损失将必需进一步的治疗。虽然耳膜通常会自行痊愈。
+     
+     医生已经解释所有相关信息。我完全理解治疗方法和程序和所涉及的风险。[BR]
+     我对医生的解释感到满意，并且我完全理解这一过程序，以及可能的风险和副作用。
+      
+            
+     ${signature}
+      
+     Signature
+     
+     Name:${name}${surname} [BR]
+     ${today()}
+      
+     Staff responsible for consent: ${staff}
+
+
+buttons:
+  - Exit: exit
+
+    
