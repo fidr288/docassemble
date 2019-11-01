@@ -386,7 +386,7 @@ subquestion: |
   * I understand that if I visit another Medical Centre where I am not enrolled I may be charged a higher fee.[BR]我明白我若去其他诊所就医, 将会被收取较高的费用 
   * I have been given information about the benefits and implications of enrolment with the PHO, and their contact details.[BR]我已被告知关于注册的含意和所带来的好处, 以及此间诊所提供的服务,和Auckland PHO的联系方式 
   * I have read and I agree with the Use of Health Information Statement. The information I have provided on the Enrolment Form will be used to determine eligibility to receive publicly-funded services. Information may be compared with other government agencies,but only when permitted under the Privacy Act.[BR]我已阅读并同意使用健康信息声明. 我在注册表格上提供的资料将用于确定获得公立资助服务的资格. 信息可能会在隐私法允许的情况下, 与其他政府机构进行比较
-  * I understand that the Practice participates in a national survey about people's health care experience and how their overall care is managed. Taking part is voluntary and all responses will be anonymous. I can decline the survey or opt out of the survey by informing the Practice. The survey provides important information that is used to improve health services.[BR]*我了解该诊所参与了有关人口保健经验以及如何管理其总体护理的全国调查。 参加是自愿的，所有回复均为匿名。我可以通知诊所以拒绝接受调查。该调查提供了用于改善卫生服务的重要信息。 
+  * I understand that the Practice participates in a national survey about people's health care experience and how their overall care is managed. Taking part is voluntary and all responses will be anonymous. I can decline the survey or opt out of the survey by informing the Practice. The survey provides important information that is used to improve health services.[BR]我明白此诊所参与了国家关于人民健康照护体验和他们整体健康是如何管理的调查。 参加调查是自愿的以及所有的回答都是匿名的。 我可以透过告知诊所，以拒绝或退出参与调查。 此调查提供了重要信息去进步和改善医疗保健服务。
   * I agree to inform the practice of any changes in my contact details and entitlement and/or eligibility to be enrolled.[BR]我了解若我的联系方式或注册资格有所改变, 我会通知此诊所, 以做更改 
   
 fields:
@@ -473,7 +473,7 @@ attachment:
      
      **email: **${email} 
      
-     **smoker:** ${smoke}  quit date: ${quit_date}
+     **smoker:** ${smoke}  **quit date:** ${quit_date}
      
      **Agrees to receive text:** ${agree_txt}, **Agrees to receive emails:** ${agree_email}
      
@@ -501,7 +501,15 @@ attachment:
      I am entitled to enrol because I am residing permanently in New Zealand[BR]
      *The definition of residing permanently in NZ is that you intended to be a resident in New Zealand for at least 182 days in the next 12 months.*[BR]
      
+     -----------------------------------------
      
+     * I intend to use this practice as my regular and ongoing provider of primary health care services.
+     * I understand that by enrolling with Dominion Medical Centre I will be enrolled with Auckland PHO, the Primary Health Organisation (PHO) this Medical Centre belongs to, and my name, address and other identification details will be included on both the practice and the PHO enrolment register.
+     * I understand that if I visit another Medical Centre where I am not enrolled I may be charged a higher fee.
+     * I have been given information about the benefits and implications of enrolment with the PHO, and their contact details.
+     * I have read and I agree with the Use of Health Information Statement. The information I have provided on the Enrolment Form will be used to determine eligibility to receive publicly-funded services. Information may be compared with other government agencies,but only when permitted under the Privacy Act.
+     * I understand that the Practice participates in a national survey about people's health care experience and how their overall care is managed. Taking part is voluntary and all responses will be anonymous. I can decline the survey or opt out of the survey by informing the Practice. The survey provides important information that is used to improve health services.
+     * I agree to inform the practice of any changes in my contact details and entitlement and/or eligibility to be enrolled.
      
      -----------------------------------------
            
