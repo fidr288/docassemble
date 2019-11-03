@@ -206,7 +206,6 @@ question: |
 fields: 
   - Ethnicity: ethnicity
     input type: radio
-    required: False
     choices:
       - NZ european
       - Maori
@@ -217,7 +216,7 @@ fields:
       - other
 
 
-  - other please state: other_ethnicity
+  - other/additional please state: other_ethnicity
     required: False
 back button: True
     
@@ -441,13 +440,11 @@ code: |
   dob = format_date(user.birthdate, format='dd-MM-yyyy')
 
 ---
-mandatory: True
-question: Your document is ready.
+
 attachment:
   - name: DMC enrolment form
     filename: ${surname}-${name}-${dob}
-    description: |
-     DMC enrolment form
+    variable name: doc
     content: |
      [BORDER]
      **Dominion Medical Centre Enrolment form**[BR] 
@@ -543,5 +540,27 @@ attachment:
      **Authority name: ** ${auth_name} **Relationship: ** ${auth_relationship} **Phone: ** ${auth_phone}
 
      
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Ask reception to attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+   ${surname} ${name} enrolment form 
+content: |
+  Download and attach to  ${surname} ${name} file. Remember to also scan patient passport
+  
 
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
       

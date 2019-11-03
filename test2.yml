@@ -1,4 +1,3 @@
-
 ---
 metadata:
   title: Ear syringe eng
@@ -121,11 +120,13 @@ attachment:
       
      Signature
      
-     Name:${name}  ${surname} [BR]
+     Name:${name}${surname} [BR]
      ${today()}
       
      Staff responsible for consent: ${staff}
-     
+
+
+
 ---
 mandatory: True
 question: |
@@ -139,9 +140,9 @@ subquestion: |
 ---
 template: hello_email
 subject: |
-   ${surname} ${name} consent form 
+  completed form 
 content: |
-  Download and attach to  ${surname} ${name} file
+  Download and attach to patient file
   
 
 ---
