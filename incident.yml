@@ -1,0 +1,220 @@
+metadata:
+  title: Incident form
+  short title: 
+  comment: dmc incident form
+---
+mandatory: True
+code: |
+  person_surname
+---
+mandatory: True
+question: |
+
+fields:
+  - Person involved: person_involved
+    input type: radio
+    choices:
+      - Staff
+      - Patient
+      - Visitor
+      - N/A
+---
+mandatory: True
+question: |
+  
+fields:
+  - ACC filled?: acc
+    input type: radio
+    choices:
+      - yes
+      - no
+
+---
+code: |
+  person_surname = "n/a"
+  person_name = "n/a"
+  nhi = "n/a"
+  person_dob = "n/a"
+  
+---      
+if: |
+  person_involved != 'N/A'
+  
+question: |
+  Involved person name
+fields:
+  - Surname: person_surname
+  - Name: person_name
+  - NHI: nhi
+    required: False
+  - DOB: person_dob
+    datatype: date
+    required: False
+  - Name of staff if person assessed by medical staff: staff
+    required: False
+
+back button: True
+
+---
+mandatory: True
+question: |
+
+fields:
+  - Details of incident: incident_detail
+    input type: radio
+    choices:
+      - Actual incident
+      - Near miss incident
+
+back button: True
+---
+mandatory: True
+question: |
+  
+subquestion: |
+  
+fields:
+  - Date of incident: incident_date
+    datatype: date
+  - Time of incident: incident_time
+    datatype: time
+  - Witness: witness
+
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Description of incident: incident_description
+    datatype: area
+
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Immediate action taken: incident_action
+    datatype: area
+
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Factors contributing to the incident: incident_factor
+    datatype: area
+    
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Long term action to prevent re-occurrence: incident_prevent
+    datatype: area
+
+back button: True
+---
+mandatory: True
+
+question: |
+  Person filling form
+fields:
+  - Name: name
+  - Date: fill_date
+    datatype: date
+  - Designation: designation
+  
+back button: True
+---
+mandatory: True
+question: |
+  Sign
+  
+subquestion: |
+
+  
+signature: signature
+
+back button: True
+---
+code: |
+  inc_date = format_date(incident_date, format='dd-MM-yyyy')
+---
+attachment:
+  - name: DMC incident form
+    filename: incident_form_${inc_date}
+    variable name: doc
+    content: |
+
+     **Dominion Medical Centre incident reporting form**[BR] 
+     
+      ----
+      
+     **Details of incident: ** ${incident_detail}  **Date of incident: ** ${incident_date} 
+     
+     **Time of incident: ** ${incident_time}  **Witness: ** ${witness} **ACC filled?: ** ${acc}
+     
+     **Person involved: ** ${person_involved}, **Name: ** ${person_name} ${person_surname} **DOB: ** ${person_dob}
+     
+     **Name of medical staff if person assessed: ** ${staff}
+     
+     ---
+     
+     **Description of incident** 
+     
+     ${incident_description}
+     
+     **Immediate action taken**
+     
+     ${incident_action}
+     
+     ----
+     
+     **Summary of investigation:**
+     
+     **Factors contributing to the incident:**
+     
+     ${incident_factor}
+     
+     **Long term action to prevent re-occurence:**
+     
+     ${incident_prevent}
+     
+     ---
+     
+     
+     
+     ${signature}
+     
+     Signature
+     
+     **Form filled by: ** ${name}  **Designation: ** ${designation} **Date filled: ** ${fill_date}
+     
+     
+        
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Fill in incident register
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+  Incident form 
+content: |
+  Download and fill in register
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
