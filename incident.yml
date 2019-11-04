@@ -203,9 +203,9 @@ question: |
   Completed
 subquestion: |
   % if success_sending_email:
-  Email sent successfully. Fill in incident register
+  Fill in incident register please
   % else:
-  Email failed to send. Contact administrator
+  Something went wrong. Contact administrator
   % endif
 ---
 template: hello_email
@@ -215,6 +215,6 @@ content: |
   Download and fill in register
 ---
 code: |
-  variable = 'contact@dominionmedical.co.nz'
+  variable = 'haida@dominionmedical.co.nz'
   success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
 ---
