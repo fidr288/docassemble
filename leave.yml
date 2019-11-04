@@ -121,6 +121,6 @@ content: |
   leave form
 ---
 code: |
-  variable = 'haida@dominionmedical.co.nz'
+  variable = 'watch388@gmail.com'
   success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
 ---
