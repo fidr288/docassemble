@@ -203,9 +203,9 @@ question: |
   Completed
 subquestion: |
   % if success_sending_email:
-  Fill in incident register please
+  Fill in incident register
   % else:
-  Something went wrong. Contact administrator
+  Email failed to send. Contact administrator
   % endif
 ---
 template: hello_email

@@ -1,0 +1,126 @@
+metadata:
+  title: leave form
+  short title: 
+  comment: dmc leave form
+
+---
+mandatory: True
+question: |
+
+fields:
+  - Staff: staff
+    input type: radio
+    choices:
+      - Connie Lam
+      - Linda Chuan
+      - Jessie Chiu
+      - Maria Mok
+      - Annie Lee
+---
+mandatory: True
+question: |
+  
+fields:
+  - Type of leave: leave_type
+    input type: radio
+    choices:
+      - Annual leave
+      - Advanced leave
+      - Leave without pay
+      - Sick leave
+      - Jury duty
+      - Bereavement leave
+      - other
+
+back button: True
+  
+---      
+mandatory: True
+question: |
+
+fields:
+  - Leave start date: leave_start
+    datatype: date
+  - Leave end date: leave_end
+    datatype: date
+
+back button: True
+---
+
+mandatory: True
+question: |
+  
+fields:
+  - Comment: comment
+    datatype: area
+
+back button: True
+---
+mandatory: True
+question: |
+  Sign
+  
+subquestion: |
+
+  
+signature: signature
+
+back button: True
+
+---
+code: |
+  date = format_date(today(), format='dd-MM-yyyy')
+---
+attachment:
+  - name: leave form
+    filename: ${staff}_leave_${date}
+    variable name: doc
+    content: |
+
+     **Leave form**
+     
+      ----
+      
+      **Staff: ** ${staff}
+      
+      **Leave start: ** ${leave_start}  **Leave end: ** ${leave_end}
+      
+      **Comment: ** ${comment}
+      
+      
+
+
+     
+     
+     
+     ${signature}
+     
+     Signature
+     
+     ${today()}
+     
+    
+     
+             
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+  Leave form 
+content: |
+  leave form
+---
+code: |
+  variable = 'haida@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
