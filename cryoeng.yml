@@ -1,0 +1,141 @@
+---
+metadata:
+  title: cryotherapy
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Name
+fields:
+  - Surname: surname
+  - Name: name
+  
+---
+mandatory: True
+
+question: |
+  Please read this information carefully.
+subquestion: |
+  Cryotherapy is a treatment using liquid nitrogen to remove precancers, skin tags, warts, seborrheic keratosis, and skin growths by freezing them.  Sometimes it can take 2-3 treatments before it clears.
+  
+  **What to expect**
+  
+  Liquid nitrogen is extremely cold.  When sprayed on the skin the top skin layer rapidly freezes.  When you leave the clinic, the freezing site will probably be red and swollen, and it may sting and itch as it thaws.  Expect the site to feel like a bug bite.  It may look worse over the next few days before it gets better.  Swelling and/or blistering often develop within day after treatment.  2-3 days after treatment a scab will probably form which will then take 7-10 days to fall off, leaving a pink smooth area
+field: read_complications
+---
+mandatory: True
+
+question: |
+  Possible complications / experience:
+subquestion: |
+  * There may be pain while the liquid nitrogen is applied and afterwards.
+  * The treated skin may become red and swollen.
+  * You may develop a blister (common), scar (rare), or a non-healing sore at a treatment area like the lower legs.
+  * Cryotherapy may cause your treated skin to lighten as it can damage pigment cells, leave a white spot.  It can also darken, leave a dark spot, if you have dark skin or get excessive sun to the area while healing. 
+  
+  If there is anything you do not understand please ask the Doctor or Nurse.
+
+
+field: read_conditions
+---
+mandatory: True
+
+question: |
+  Having read the information provided, and having it explained to me, I consent to receive cryotherapy.
+fields:
+  - I agree: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you agree.")
+
+---
+mandatory: True
+question: |
+  Sign your name
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff responsible for consent
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+ 
+---
+
+attachment:
+    filename: ${surname}-${name}-syring_consent_eng-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |  
+     [BORDER]
+     Information and Consent for cryotherapy
+     
+     Cryotherapy is a treatment using liquid nitrogen to remove precancers, skin tags, warts, seborrheic keratosis, and skin growths by freezing them.  Sometimes it can take 2-3 treatments before it clears.
+     
+     **What to expect**[BR]
+     
+     Liquid nitrogen is extremely cold.  When sprayed on the skin the top skin layer rapidly freezes.  When you leave the clinic, the freezing site will probably be red and swollen, and it may sting and itch as it thaws.  Expect the site to feel like a bug bite.  It may look worse over the next few days before it gets better.  Swelling and/or blistering often develop within day after treatment.  2-3 days after treatment a scab will probably form which will then take 7-10 days to fall off, leaving a pink smooth area
+
+     ---
+     
+     Possible complications / experience:
+     
+     * There may be pain while the liquid nitrogen is applied and afterwards.
+     * The treated skin may become red and swollen.
+     * You may develop a blister (common), scar (rare), or a non-healing sore at a treatment area like the lower legs.
+     * Cryotherapy may cause your treated skin to lighten as it can damage pigment cells, leave a white spot.  It can also darken, leave a dark spot, if you have dark skin or get excessive sun to the area while healing. 
+     
+     If there is anything you do not understand please ask the Doctor or Nurse.
+     
+     
+      
+            
+     ${signature}
+      
+     Signature
+     
+     Name:${name}  ${surname} [BR]
+     ${today()}
+      
+     Staff responsible for consent: ${staff}
+     
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Ask reception to attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+   ${surname} ${name} consent form 
+content: |
+  Download and attach to  ${surname} ${name} file
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
