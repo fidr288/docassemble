@@ -1,0 +1,232 @@
+---
+metadata:
+  title: IUD english consent
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Name
+fields:
+  - Surname: surname
+  - Name: name
+  
+---
+mandatory: True
+
+question: |
+  I request an insertion of an Intra Uterine Contraception Device(IUCD)for:
+
+fields:
+  - IUD: iud_type
+    input type: radio
+    choices:
+      - Contraception
+      - Treatment of Heavy Menstrual Bleeding
+
+---
+mandatory: True
+
+question: |
+  Advantages of an IUD
+subquestion: |
+  * Fit and forget -long acting reversible contraception
+  * Very effective contraception(more than (99%)
+  * Effective treatment for heavy menstrual bleeding(Mirena)
+  * Mirena licensed for 5 years / Copper IUCD licensed for 10 years
+
+fields:
+  - I understand: understand_advantage
+    datatype: yesnowide
+validation code: |
+  if not understand_advantage:
+    validation_error("You cannot continue until you agree.")
+back button: True
+
+---
+mandatory: True
+
+question: |
+  Potential Insertion problems
+subquestion: |
+  * Can be uncomfortable
+  * If difficult to insert,may need referral to specialist to insert under anaesthesia.
+
+fields:
+  - I understand: understand_prob
+    datatype: yesnowide
+validation code: |
+  if not understand_prob:
+    validation_error("You cannot continue until you agree.")
+back button: True
+---
+mandatory: True
+
+question: |
+  Potential side effects
+subquestion: |
+  * Bleeding pattern likely to change
+  * Copper IUCD -likely to make periods slightly longer,heavier and slightly more painfulosettles within a few periods
+  * Mirena-may cause irregular spotting/ light bleeding which settles in a few months,or no periods
+  * Small risk of infection when first inserted(approx. 1%)
+  * Small risk of injury to the womb/uterus (perforation)  (1:1000 higher when breastfeeding)
+  * Small risk of expulsion/coming out by itself (5%)
+  
+
+fields:
+  - I understand: understand_se
+    datatype: yesnowide
+validation code: |
+  if not understand_se:
+    validation_error("You cannot continue until you agree.")
+back button: True
+---
+mandatory: True
+
+question: |
+  Disadvantages
+subquestion: |
+  * 1% failure rate
+  * Pregnancy may be outside the womb/uterus (ectopic pregnancy)
+  * Strings disappear-may be difficult to remove
+  
+fields:
+  - I understand: understand_disadvantage
+    datatype: yesnowide
+validation code: |
+  if not understand_disadvantage:
+    validation_error("You cannot continue until you agree.")
+back button: True
+
+---
+mandatory: True
+
+question: |
+  The Advantages and disadvantages have been discussed with me (Patient)
+  
+subquestion: |
+  I have had an opportunity to ask questions
+fields:
+  - yes: ask_questions
+    datatype: yesnowide
+validation code: |
+  if not ask_questions:
+    validation_error("You cannot continue until you agree.")
+back button: True
+---
+mandatory: True
+question: |
+  Sign your name
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff responsible for consent
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+      - Celia Xiao
+ 
+---
+
+attachment:
+    filename: ${surname}-${name}-IUD_consent-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |  
+     [BORDER]
+     Information and Consent for insertion of Intra Uterine Contraception Device
+     
+     ---
+     
+     I request an insertion of an Intra Uterine Contraception Device (IUCD) for:
+     
+     ${iud_type}
+     
+     ---
+     
+     **Advantages of an IUD**
+     
+     * Fit and forget -long acting reversible contraception
+     * Very effective contraception(more than (99%)
+     * Effective treatment for heavy menstrual bleeding(Mirena)
+     * Mirena licensed for 5 years / Copper IUCD licensed for 10 years
+     
+     **Potential Insertion problems**
+     
+     * Can be uncomfortable
+     * If difficult to insert,may need referral to specialist to insert under anaesthesia.
+     
+     **Potential side effects**
+     
+     * Bleeding pattern likely to change
+     * Copper IUCD -likely to make periods slightly longer,heavier and slightly more painfulosettles within a few periods
+     * Mirena-may cause irregular spotting/ light bleeding which settles in a few months,or no periods
+     * Small risk of infection when first inserted(approx. 1%)
+     * Small risk of injury to the womb/uterus (perforation) (1:1000 higher when breastfeeding)
+     * Small risk of expulsion/coming out by itself (5%)
+     
+     **Disadvantages**
+     
+     * 1% failure rate
+     * Pregnancy may be outside the womb/uterus (ectopic pregnancy)
+     * Strings disappear-may be difficult to remove
+     
+     ---
+     
+     The Advantages and disadvantages have been discussed with me (Patient)
+     
+     I have had an opportunity to ask questions
+     
+     ---
+
+     
+     
+      
+            
+     ${signature}
+      
+     Signature
+     
+     Name:${name}  ${surname} [BR]
+     ${today()}
+      
+     Staff responsible for consent: ${staff}
+     
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Ask reception to attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+   ${surname} ${name} IUD consent form 
+content: |
+  Download and attach to  ${surname} ${name} file
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
