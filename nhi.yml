@@ -1,8 +1,12 @@
+metadata:
+  title: Enrolment NHI details
+  short title: 
+  comment: NHI details
 ---
 mandatory: True
 
 question: |
-  Name
+  Details
 fields:
   - Surname : surname
   - Name : name
@@ -10,14 +14,8 @@ fields:
     required: False
   - birthday: birthday
     datatype: date 
----
-
-mandatory: TRUE
-question: |
-  STAFF: ENTER NHI
-fields:
   - NHI: nhi
-    
+
 ---
 code: |
   dob = format_date(birthday, format='dd-MM-yyyy')
@@ -29,7 +27,9 @@ attachment:
     filename: ${surname}-${name}-${dob}-NHI
     variable name: doc
     content: |
-     Enrolment Form page 2 NHI details
+     Enrolment Form page 2 
+     
+     NHI details
       
      -----------------------------------------
                   
