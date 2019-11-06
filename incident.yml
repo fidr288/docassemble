@@ -35,6 +35,7 @@ code: |
   person_name = "n/a"
   nhi = "n/a"
   person_dob = "n/a"
+  staff = "n/a"
   
 ---      
 if: |

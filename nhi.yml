@@ -1,0 +1,63 @@
+---
+mandatory: True
+
+question: |
+  Name
+fields:
+  - Surname : surname
+  - Name : name
+  - Middle name: middle_name
+    required: False
+  - birthday: birthday
+    datatype: date 
+---
+
+mandatory: TRUE
+question: |
+  STAFF: ENTER NHI
+fields:
+  - NHI: nhi
+    
+---
+code: |
+  dob = format_date(birthday, format='dd-MM-yyyy')
+
+---
+
+attachment:
+  - name: DMC enrolment form
+    filename: ${surname}-${name}-${dob}-NHI
+    variable name: doc
+    content: |
+     Enrolment Form page 2 NHI details
+      
+     -----------------------------------------
+                  
+     **Surname: ** ${surname}    **Name: ** ${name}  **Middle name:** ${middle_name} 
+      
+     **DOB: ** ${birthday} **NHI:** ${nhi}
+     
+     
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully.attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+   ${surname} ${name} NHI details
+content: |
+  Download and attach to  ${surname} ${name} file. 
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
+      

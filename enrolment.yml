@@ -126,7 +126,7 @@ fields:
     required: False
   - email 电子邮件: email
     datatype: email
-    required: False
+    
 
 back button: True
 ---
@@ -190,12 +190,10 @@ question: |
   Next of kin 紧急联络人
 fields:
   - Name 姓名: nok_name
-    required: False
   - Relationship 关系: nok_relationship
-    required: False
   - Phone电话: nok_phone
     datatype: integer
-    required: False
+
     
 back button: True
 ---
@@ -434,6 +432,7 @@ question: |
   STAFF: ENTER NHI
 fields:
   - NHI: nhi
+    required: False
 
 ---
 code: |
