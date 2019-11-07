@@ -52,6 +52,7 @@ subquestion: |
 buttons:
   - Exit: exit
     url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
 ---
 template: hello_email
 subject: |
