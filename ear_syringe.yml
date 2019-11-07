@@ -1,0 +1,175 @@
+---
+metadata:
+  title: Ear syringe eng
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Name 姓名
+fields:
+  - Surname 姓: surname
+  - Name 名: name
+  
+---
+mandatory: True
+
+question: |
+  Information and Consent for Ear Syringing[BR]
+  外耳道冲洗法资料-知情同意
+subquestion: |
+  The Doctor has requested that you have your ear/s syringed. As with any medical procedure there are risks associated with this. Even though we do everything possible to minimise these risks it is important that you read and understand the following information:[BR]
+  外耳道冲洗是一种很常用于清除在耳道的耳垢的方法. 温水透过压力控制注射器到受清洗的耳朵使耳垢脱落流出. 此方法很方便, 有效并安全. 此诊所的医生和护士都受过适当训练, 也进行过许多外耳道冲洗.然而任何医疗过程都潜在某种程度的风险, 我们需要您在进行程序前, 先阅读这份资料让您充分了解可能出现的问题和风险.
+  
+  Potential problems can be:[BR]
+  潜在的并发症:
+  
+  * Dizziness or Vertigo (head spinning)[BR]
+  恶心, 头晕或咳嗽.
+  * Otitis externa (infection of ear canal)[BR]
+  外耳炎
+  * Perforated tympanic membrane (ruptured ear drums) which can result in deafness.[BR]
+  在极少数的情况该治疗方法可能会导致更严重的伤害. 水的压力可能会把耳道鼓膜刺穿(也称为鼓膜穿孔). 这既不是一个预期或理想的结果, 但这是此治疗过程可能会出现的小风险. 尽管耳膜穿孔通常会自行痊愈, 疼痛和听力损失将需要进一步的治疗.
+  * You may have to return for an additional consult if we cannot clear the wax in one session.[BR]
+  该治疗方法不一定能一次清除所有耳垢. 我们可能需要您回诊再进行一次.
+  
+field: read_complications
+---
+mandatory: True
+
+question: |
+  To minimise the risk of perforation please inform the nurse if you have had any of the following problems :[BR]
+  为了尽量减少鼓膜穿孔的风险, 如果您有任何以下的情况或病史请告知护士:
+subquestion: |
+  * Upper respiratory tract infection (head cold)[BR]
+  上呼吸道感染（感冒）
+  * History of ear surgery or disease[BR]
+  耳部手术
+  * Insertion of grommets[BR]
+  耳膜通风管（索环）治疗
+  * History of previous perforation (rupture) of the ear drums[BR]
+  鼓膜穿孔
+  * Otitis externa / Otitis media – infection of ear canal / middle ear[BR]
+  外耳炎
+  * Affected ear is the only hearing ear[BR]
+  患耳是唯一有听力的耳朵
+  * Prone to dizziness or vertigo[BR]
+  容易头晕或眩晕
+  
+  Microsuction is another safer option for clearing ear wax. This can be done in private clinics and we can refer you if you prefer this option.[BR]
+  除了外耳道冲洗法, 耳道抽吸法也可用来清除耳垢. 本诊所不能进行此项治疗方法, 但我们可以将你转诊至别的医疗诊所进行.
+
+
+field: read_conditions
+---
+mandatory: True
+
+question: |
+  Having read the information provided, and having it explained to me, I consent to have my ear/s syringed.[BR]
+  我已读完上述的信息并充分了解此过程所涉及的风险. 我已询问完我的问题并同意进行此程序.
+fields:
+  - I agree 我同意: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you agree.")
+
+---
+mandatory: True
+question: |
+  Sign your name
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff responsible for consent
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+      - Celia Xiao
+      - Andy Watt
+      - Haida Leung
+ 
+---
+
+attachment:
+    filename: ${surname}-${name}-syringe_consent-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |  
+     [BORDER]
+     Information and Consent for Ear Syringing
+     
+     The Doctor has requested that you have your ear/s syringed. As with any medical procedure there are risks associated with this. Even though we do everything possible to minimise these risks it is important that you read and understand the following information :  
+     
+     Potential problems can be:
+     
+     * Dizziness or Vertigo (head spinning)
+     * Otitis externa (infection of ear canal)
+     * Perforated tympanic membrane (ruptured ear drums) which can result in deafness.
+     * You may have to return for an additional consult if we cannot clear the wax in one session.[BR]
+     
+     To minimise the risk of perforation please inform the nurse if you have had any of the following problems :
+
+     * Upper respiratory tract infection (head cold)
+     * History of ear surgery or disease
+     * Insertion of grommets
+     * History of previous perforation (rupture) of the ear drums
+     * Otitis externa / Otitis media – infection of ear canal / middle ear
+     * Affected ear is the only hearing ear
+     * Prone to dizziness or vertigo
+     
+     Microsuction is another safer option for clearing ear wax. This can be done in private clinics and we can refer you if you prefer this option.[BR]
+      
+            
+     ${signature}
+      
+     Signature
+     
+     Name:${name}  ${surname} [BR]
+     ${today()}
+      
+     Staff responsible for consent: ${staff}
+     
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Ask reception to attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+   ${surname} ${name} ear syringe consent form 
+content: |
+  Download and attach to  ${surname} ${name} file
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
