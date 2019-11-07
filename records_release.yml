@@ -1,0 +1,124 @@
+metadata:
+  title: record release
+  short title: 
+  comment: dmc record release form
+
+---
+mandatory: True
+
+question: |
+  Patient details
+fields:
+  - Surname: surname
+  - Name: name
+  - Date of birth: dob
+    datatype: date
+---
+code: |
+  add_person = "n/a"
+---
+mandatory: True
+  
+question: |
+  Details of person to be given access to this patient's information
+fields:
+  - Surname: person_surname
+  - Name: person_name
+  - Relationship: relationship
+  - additional persons: add_person
+    datatype: area
+    required: false
+
+
+back button: True
+
+---
+
+mandatory: True
+question: |
+  Detail below if the access is to be limited in any way (e.g only for test results or for a specified time period only)
+fields:
+  - Additional details: add_details
+    datatype: area
+    required: false
+
+back button: True
+
+---
+mandatory: True
+question: |
+  I confirm that I give permission for the Practice to communicate with the person identified above in regards to my medical records.
+  
+subquestion: |
+
+  
+signature: signature
+
+back button: True
+
+---
+attachment:
+  - name: DMC medical release form
+    filename: ${surname}-${name}_release_form_${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |
+
+     **Dominion Medical Centre release of medical information form**[BR] 
+     
+      ----
+      
+     **Patient details**
+     
+     **Surname: ** ${surname}  **Name: ** ${name}  **DOB: ** ${dob}
+     
+     ---
+     
+     **Details of person to be given access to this patient's information**
+     
+     **Surname: ** ${person_surname}  **Name: ** ${person_name}  **Relationship: ** ${relationship}
+     
+     **Additional persons if applicable**
+     
+     ${add_person}
+     
+     ---
+     
+     **Detail below if the access is to be limited in any way (e.g only for test results or for a specified time period only)** 
+     
+     ${add_details}
+     
+     ----
+     
+     I confirm that I give permission for the Practice to communicate with the person identified above in regards to my medical records.
+     
+     
+     ${signature}
+     
+     Signature
+     
+     ${today()}
+     
+     
+        
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  success
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+---
+template: hello_email
+subject: |
+  Release of medical records form for ${name} ${surname}
+content: |
+  Download and attach in notes
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---

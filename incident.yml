@@ -216,6 +216,6 @@ content: |
   Download and fill in register
 ---
 code: |
-  variable = 'haida@dominionmedical.co.nz'
+  variable = 'watch388@gmail.com'
   success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
 ---
