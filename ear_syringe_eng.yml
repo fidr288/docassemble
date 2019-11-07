@@ -84,11 +84,14 @@ fields:
     choices:
       - Annie Lee
       - Maria Mok
+      - Celia Xiao
+      - Andy Watt
+      - Haida Leung
  
 ---
 
 attachment:
-    filename: ${surname}-${name}-syring_consent_eng-${format_date(today(), format='dd-MM-yyyy')}
+    filename: ${surname}-${name}-syringe_consent-${format_date(today(), format='dd-MM-yyyy')}
     variable name: doc
     content: |  
      [BORDER]
@@ -143,7 +146,7 @@ buttons:
 ---
 template: hello_email
 subject: |
-   ${surname} ${name} consent form 
+   ${surname} ${name} ear syringe consent form 
 content: |
   Download and attach to  ${surname} ${name} file
   

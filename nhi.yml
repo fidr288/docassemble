@@ -28,16 +28,20 @@ attachment:
     variable name: doc
     content: |
      Enrolment Form page 2 
-     
-     NHI details
       
      -----------------------------------------
                   
-     **Surname: ** ${surname}    **Name: ** ${name}  **Middle name:** ${middle_name} 
+     **Surname: ** ${surname}    
+     
+     **Name: ** ${name}  
+     
+     **Middle name:** ${middle_name} 
       
-     **DOB: ** ${birthday} **NHI:** ${nhi}
+     **DOB: ** ${birthday} 
      
+     **NHI:** ${nhi}
      
+     ---
 ---
 mandatory: True
 question: |

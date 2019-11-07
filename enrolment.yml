@@ -570,7 +570,7 @@ content: |
 
 ---
 code: |
-  variable = 'haida@dominionmedical.co.nz'
+  variable = 'contact@dominionmedical.co.nz'
   success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
 ---
       

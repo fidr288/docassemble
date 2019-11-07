@@ -77,6 +77,9 @@ fields:
     choices:
       - Annie Lee
       - Maria Mok
+      - Celia Xiao
+      - Andy Watt
+      - Haida Leung
  
 ---
 
@@ -134,7 +137,7 @@ buttons:
 ---
 template: hello_email
 subject: |
-   ${surname} ${name} consent form 
+   ${surname} ${name} liquid nitrogen consent form 
 content: |
   Download and attach to  ${surname} ${name} file
   
