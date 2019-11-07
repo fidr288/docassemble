@@ -426,7 +426,12 @@ subquestion: |
 
 field: user_complete
 back button: True
+
 ---
+code: |
+  nhi = "not available yet"
+---
+
 mandatory: TRUE
 question: |
   STAFF: ENTER NHI
@@ -549,6 +554,11 @@ subquestion: |
   % else:
   Email failed to send. Contact administrator
   % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+
 ---
 template: hello_email
 subject: |

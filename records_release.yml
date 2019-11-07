@@ -7,11 +7,11 @@ metadata:
 mandatory: True
 
 question: |
-  Patient details
+  Patient details 病人的详细资料
 fields:
-  - Surname: surname
-  - Name: name
-  - Date of birth: dob
+  - Surname 姓: surname
+  - Name 名: name
+  - Date of birth 出生日期: dob
     datatype: date
 ---
 code: |
@@ -20,11 +20,12 @@ code: |
 mandatory: True
   
 question: |
-  Details of person to be given access to this patient's information
+  Details of person to be given access to this patient's information[BR]
+  授权人资料
 fields:
-  - Surname: person_surname
-  - Name: person_name
-  - Relationship: relationship
+  - Surname 姓: person_surname
+  - Name 名: person_name
+  - Relationship 关系: relationship
   - additional persons: add_person
     datatype: area
     required: false
@@ -111,6 +112,10 @@ subquestion: |
   % else:
   Email failed to send. Contact administrator
   % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
 ---
 template: hello_email
 subject: |
