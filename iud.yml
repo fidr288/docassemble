@@ -16,28 +16,33 @@ fields:
 mandatory: True
 
 question: |
-  I request an insertion of an Intra Uterine Contraception Device(IUCD)for:
+  I request an insertion of an Intra Uterine Contraception Device(IUCD)for:[BR]
+  由于以下原因我要求插入子宫内避孕器（IUCD）
 
 fields:
   - IUD: iud_type
     input type: radio
     choices:
-      - Contraception
-      - Treatment of Heavy Menstrual Bleeding
+      - Contraception 避孕
+      - Treatment of Heavy Menstrual Bleeding [BR]严重月经出血的治疗
 
 ---
 mandatory: True
 
 question: |
-  Advantages of an IUD
+  Advantages of an IUD 宫内节育器的优点
 subquestion: |
-  * Fit and forget -long acting reversible contraception
-  * Very effective contraception(more than (99%)
-  * Effective treatment for heavy menstrual bleeding(Mirena)
-  * Mirena licensed for 5 years / Copper IUCD licensed for 10 years
+  * Fit and forget -long acting reversible contraception[BR]
+  长效可逆避孕
+  * Very effective contraception(more than (99%)[BR]
+  有效避孕（超过（99％）
+  * Effective treatment for heavy menstrual bleeding(Mirena)[BR]
+  有效治疗月经大量出血（Mirena）
+  * Mirena licensed for 5 years / Copper IUCD licensed for 10 years[BR]
+  Mirena有效5年/铜制宫内节育器有效10年
 
 fields:
-  - I understand: understand_advantage
+  - I understand 我明白: understand_advantage
     datatype: yesnowide
 validation code: |
   if not understand_advantage:
@@ -48,13 +53,14 @@ back button: True
 mandatory: True
 
 question: |
-  Potential Insertion problems
+  Potential Insertion problems[BR]插入可能发生的问题
 subquestion: |
-  * Can be uncomfortable
-  * If difficult to insert,may need referral to specialist to insert under anaesthesia.
+  * Can be uncomfortable[BR]可能不舒服
+  * If difficult to insert,may need referral to specialist to insert under anaesthesia.[BR]
+  如果难以插入，可能需要转介专家在麻醉下插入。
 
 fields:
-  - I understand: understand_prob
+  - I understand 我明白: understand_prob
     datatype: yesnowide
 validation code: |
   if not understand_prob:
@@ -64,18 +70,23 @@ back button: True
 mandatory: True
 
 question: |
-  Potential side effects
+  Potential side effects[BR]您可能会遇到以下副作用
 subquestion: |
-  * Bleeding pattern likely to change
-  * Copper IUCD -likely to make periods slightly longer,heavier and slightly more painfulosettles within a few periods
-  * Mirena-may cause irregular spotting/ light bleeding which settles in a few months,or no periods
-  * Small risk of infection when first inserted(approx. 1%)
-  * Small risk of injury to the womb/uterus (perforation)  (1:1000 higher when breastfeeding)
-  * Small risk of expulsion/coming out by itself (5%)
+  * Bleeding pattern likely to change[BR]月经频率可能会改变
+  * Copper IUCD -likely to make periods slightly longer,heavier and slightly more painful. Usually settles within a few periods[BR]
+  铜制IUD-可能会使月经周期更长，更重，稍微更痛。通常在几个月内好转。
+  * Mirena-may cause irregular spotting/ light bleeding which settles in a few months,or no periods[BR]
+  Mirena-可能会导致不规则的轻微出血，并在数月内好转，或者月经完全停止。
+  * Small risk of infection when first inserted(approx. 1%)[BR]
+  首次插入时感染的风险很小（约1％）
+  * Small risk of injury to the womb/uterus (perforation)  (1:1000 higher when breastfeeding)[BR]
+  子宫穿孔的风险很小（哺乳时风险时比较高1：1000）
+  * Small risk of expulsion/coming out by itself (5%)[BR]
+  脱落的风险很小（5％）
   
 
 fields:
-  - I understand: understand_se
+  - I understand 我明白: understand_se
     datatype: yesnowide
 validation code: |
   if not understand_se:
@@ -85,14 +96,15 @@ back button: True
 mandatory: True
 
 question: |
-  Disadvantages
+  Disadvantages[BR]缺点
 subquestion: |
-  * 1% failure rate
-  * Pregnancy may be outside the womb/uterus (ectopic pregnancy)
-  * Strings disappear-may be difficult to remove
+  * 1% failure rate[BR]失败率1％
+  * Pregnancy may be outside the womb/uterus (ectopic pregnancy)[BR]可能会导致宫外孕
+  * Strings disappear-may be difficult to remove[BR]
+  难以取出 IUD
   
 fields:
-  - I understand: understand_disadvantage
+  - I understand 我明白: understand_disadvantage
     datatype: yesnowide
 validation code: |
   if not understand_disadvantage:
@@ -106,9 +118,9 @@ question: |
   The Advantages and disadvantages have been discussed with me (Patient)
   
 subquestion: |
-  I have had an opportunity to ask questions
+  I have had an opportunity to ask questions[BR]我了解利弊，并有机会提出问题
 fields:
-  - yes: ask_questions
+  - yes 是: ask_questions
     datatype: yesnowide
 validation code: |
   if not ask_questions:
@@ -117,7 +129,7 @@ back button: True
 ---
 mandatory: True
 question: |
-  Sign your name
+  Sign your name 签名
   
 subquestion: |
 
