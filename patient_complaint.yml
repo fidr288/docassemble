@@ -1,0 +1,120 @@
+metadata:
+  title: complaint form
+  short title: 
+  comment: dmc complaint form
+---
+mandatory: True
+question: |
+  Your details
+fields:
+  - Surname 姓: person_surname
+  - Name 名: person_name
+  - Phone 电话: phone
+    datatype: integer
+  - email 电子邮件: email
+    datatype: email
+  - Address 地址: address
+
+---
+
+mandatory: True
+question: |
+  Brief explanation on what had happened[BR]過程簡要說明:
+fields:
+  - Details: complaint_summary
+    datatype: area
+
+back button: True
+---
+mandatory: True
+question: |
+  What actions could the clinic take in order to effectively deal with your complaint[BR]
+  理想行動來有效地處理您的投訴?
+fields:
+  - Details: complaint_action
+    datatype: area
+
+back button: True
+
+---
+mandatory: True
+question: |
+  Sign
+  
+subquestion: |
+
+  
+signature: signature
+
+back button: True
+
+---
+attachment:
+  - name: DMC complaint form
+    filename: complaint_form_${person_surname}_${person_name}-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |
+
+     **Dominion Medical Centre patient complaint form**[BR] 
+     
+      ----
+     
+     **Person details**
+     
+     **Name: ** ${person_name} ${person_surname} 
+     
+     **phone: ** ${phone} **Address: ** ${address}
+     
+     **email:** ${email}
+       
+     ---
+     
+     **Summary of complaint** 
+     
+     ${complaint_summary}
+     
+     **What actions could the clinic take in order to effectively deal with your complaint**
+     
+     ${complaint_action}
+     
+
+     ---
+     
+     
+     
+     ${signature}
+     
+     Signature
+          
+      ${today()}
+      
+      We will acknowledge your requests within 5 days. 
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Your complaint has been lodged and we will acknowledge your requests within 5 days. 
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+  Patient complaint form ${person_surname} ${person_name}
+content: |
+  Download and fill in register
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---

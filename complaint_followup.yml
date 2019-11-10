@@ -1,0 +1,160 @@
+metadata:
+  title: complaint form
+  short title: 
+  comment: dmc complaint form
+---
+mandatory: True
+question: |
+  Person involved
+fields:
+  - Surname: person_surname
+  - Name: person_name
+
+---
+
+mandatory: True
+question: |
+  
+fields:
+  - Findings of investigation: investigations
+    datatype: area
+
+back button: True
+
+---
+mandatory: True
+
+question: |
+  Investigation conducted by
+fields:
+  - Name: investigation_name
+  - Date: investigation_date
+    datatype: date
+  - Designation: investigation_designation
+  
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Actions changes made: complaint_action
+    datatype: area
+
+back button: True
+
+---
+mandatory: True
+
+question: |
+  Changes actioned by
+fields:
+  - Name: action_name
+  - Date: action_date
+    datatype: date
+  - Designation: action_designation
+  
+back button: True
+---
+mandatory: True
+
+question: |
+  Signed off by
+fields:
+  - Name: sign_name
+  - Designation: sign_designation
+
+---
+mandatory: True
+question: |
+  Sign off
+  
+subquestion: |
+
+  
+signature: signature
+
+back button: True
+---
+code: |
+  form_date = format_date(sign_date, format='dd-MM-yyyy')
+---
+attachment:
+  - name: DMC complaint followup form
+    filename: complaint_form_${person_surname}_${person_name}-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |
+
+     **Dominion Medical Centre complaint followup form**[BR] 
+     
+      ----
+     
+     **Person involved**
+     
+     **Name: ** ${person_name} ${person_surname} 
+       
+     ---
+     
+     **Findings of investigation** 
+     
+     ${investigations}
+     
+     **Conducted by**
+     
+     ${investigation_name} ,  ${investigation_designation}
+     
+     ${investigation_date}
+     
+     ---
+     
+     **Action Changes made:**
+     
+     ${complaint_action}
+     
+     **Actioned by**
+     
+     ${action_name} ,  ${action_designation}
+     
+     ${action_date}
+     
+     ---
+     
+     
+     
+     ${signature}
+     
+     Signature
+     
+     **Signed off by: ** ${sign_name}  **Designation: ** ${sign_designation} **Date filled: ** ${today()}
+     
+     
+        
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Complete register[BR]Inform complaint officer
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+  Complaint followup form ${person_surname} ${person_name}
+content: |
+  Download and complete in register
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
