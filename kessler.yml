@@ -7,8 +7,8 @@ metadata:
 mandatory: True
 
 question: |
-  These questions concern how you have been feeling over the past 30 days. Tick a box below for each question that best represents how you have been.[BR]
-  以下十个问题是有关你在过去四个星期內的感觉。选择每题中最能描述你所感受时间多久的一个答案，并在相关选项下的圆圈划上记号。
+  These questions concern how you have been feeling over the past 30 days.[BR]
+  以下十个问题是有关你在过去四个星期內的感觉。选择每题中最能描述你所感受时间多久的一个答案。
 
 field: understand
 
@@ -16,7 +16,7 @@ field: understand
 mandatory: True
 
 question: |
-  About how often did you feel tired out for no good reason?
+  Feel tired out for no good reason?
   [BR]无缘无故地感觉筋疲力尽？
 subquestion: |
   
@@ -36,7 +36,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel tired out for no good reason?
+  Feel tired out for no good reason?
   [BR]感觉紧张?
 subquestion: |
   
@@ -56,7 +56,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel so nervous that nothing could calm you down?
+  Feel so nervous that nothing could calm you down?
   [BR]感觉紧张,而且没有任何方法可以使你冷静下来?
 subquestion: |
   
@@ -75,7 +75,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel hopeless?
+  Feel hopeless?
   [BR]感觉绝望?
 subquestion: |
   
@@ -94,7 +94,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel restless or fidgety?
+  Feel restless or fidgety?
   [BR]感觉焦躁不安或坐立不安?
 subquestion: |
   
@@ -113,7 +113,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel so restless you could not sit still?
+  Feel so restless you could not sit still?
   [BR]感觉焦躁不安,以致你不能静坐?
 subquestion: |
   
@@ -132,7 +132,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel depressed?
+  Feel depressed?
   [BR]感覺抑鬱?
 subquestion: |
   
@@ -151,7 +151,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel that everything was an effort?
+  Feel that everything was an effort?
   [BR]感觉做什么都是那么吃力的?
 subquestion: |
   
@@ -170,7 +170,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel so sad that nothing could cheer you up?
+  Feel so sad that nothing could cheer you up?
   [BR]感觉那么悲伤,以致没有任何方法可以使你振奋起来?
 subquestion: |
   
@@ -189,7 +189,7 @@ back button: True
 mandatory: True
 
 question: |
-  About how often did you feel worthless?
+  Feel worthless?
   [BR]感觉自己不中用?
 subquestion: |
   

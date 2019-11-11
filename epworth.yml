@@ -25,7 +25,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -43,7 +43,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -52,7 +52,7 @@ back button: True
 mandatory: True
 
 question: |
- Sitting , inactive in a public place (e.g. a theatre or  a meeting)[BR]
+ Sitting , inactive in a public place (e.g. a theatre or a meeting)[BR]
  在公共场所坐下（如戏院或会议中）
 subquestion: |
   
@@ -61,7 +61,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -70,7 +70,7 @@ back button: True
 mandatory: True
 
 question: |
- As a passenger in a car foran hour without a break[BR]
+ As a passenger in a car for an hour without a break[BR]
  坐车一小时中间未间断
 subquestion: |
   
@@ -79,7 +79,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -88,7 +88,7 @@ back button: True
 mandatory: True
 
 question: |
- Lying down to rest  in the afternoonwhen circumstances permit
+ Lying down to rest  in the afternoon when circumstances permit
  [BR]于环境许可时躺下休息
 subquestion: |
   
@@ -97,7 +97,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -115,7 +115,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -125,7 +125,7 @@ mandatory: True
 
 question: |
  Sitting quietly after a lunch without alcohol[BR]
- 午餐后坐下休息（没有喝酒的情況下
+ 午餐后坐下休息（没有喝酒的情況下)
 subquestion: |
   
 fields:
@@ -133,7 +133,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -142,7 +142,7 @@ back button: True
 mandatory: True
 
 question: |
- In car, while stopped for afew minutes in the traffic[BR]
+ In car, while stopped for a few minutes in the traffic[BR]
  乘车或驾车时遇上停车等候
 subquestion: |
   
@@ -151,7 +151,7 @@ fields:
     input type: radio
     choices:
       - would never doze 未曾发生瞌睡: 0
-      - slght chance of dozing 很少机会瞌睡: 1
+      - slight chance of dozing 很少机会瞌睡: 1
       - moderate chance of dozing 中等机会瞌睡: 2
       - high chance of dozing 很大机会瞌睡: 3
       
@@ -167,10 +167,21 @@ code: |
   q6= int(six)
   q7= int(seven)
   q8= int(eight)
+  total = q1+q2+q3+q4+q5+q6+q7+q8
+  if total <= 10:
+    level = 'normal'
+  elif total <= 14:
+    level = 'Mild'
+  elif total <= 17:
+    level = 'Moderate'
+  else:
+    level = 'Severe'
+  
 ---
 mandatory: True
 question: |
-  Total Score = ${q1+q2+q3+q4+q5+q6+q7+q8}
+  Total Score = ${total}[BR]
+  Sleepiness severity = ${level}
 buttons:
   - Exit: exit
     url: http://192.168.0.66:8080/index.html
