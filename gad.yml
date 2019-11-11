@@ -1,0 +1,175 @@
+---
+metadata:
+  title: GAD 7
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Over the last 2 weeks, how often have you been bothered by the following problems?[BR]
+  过去两周内，患者是否遇到如下7个焦虑相关问题。
+
+field: understand
+
+---
+mandatory: True
+
+question: |
+  Feeling nervous, anxious, or on edge?
+  [BR]紧张、焦虑或愤怒？
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: one
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+
+---
+mandatory: True
+
+question: |
+  Becoming easily annoyed or irritable?
+  [BR]易被激怒?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: two
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+
+--- 
+mandatory: True
+
+question: |
+  Feeling afraid as if something awful might happen?
+  [BR]害怕什么可怕的事情发生?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: three
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  Worrying too much about different things?
+  [BR]担心很多事情?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: four
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  Being so restless that it's hard to sit still?
+  [BR]如此不安以至于很难坐立不安?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: five
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  Not being able to stop or control worrying?
+  [BR]不能停止或不能控制的担心?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: six
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  Trouble relaxing?
+  [BR]很难放松?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: seven
+    input type: radio
+    choices:
+      - Not at all 绝对没有: 0
+      - Several days 几天: 1
+      - Over half the days 超过一半: 2
+      - Nearly everyday 几乎每天: 3
+      
+back button: True     
+ 
+---
+code: |
+  q1= int(one)
+  q2= int(two)
+  q3= int(three)
+  q4= int(four)
+  q5= int(five)
+  q6= int(six)
+  q7= int(seven)
+  total = q1+q2+q3+q4+q5+q6+q7
+  if total <= 4:
+    level = 'minimal'
+  elif total <= 9:
+    level = 'Mild'
+  elif total <= 14:
+    level = 'Moderate'
+  else:
+    level = 'Severe'
+  
+  
+---
+mandatory: True
+question: |
+  Total Score = ${total}[BR]
+  Level of anxiety = ${level}
+  
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+

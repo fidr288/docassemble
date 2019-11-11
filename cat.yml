@@ -1,0 +1,233 @@
+---
+metadata:
+  title: CAT copd score
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  This questionnaire will help you and your healthcare professional to measure the impact that COPD (Chronic Obstructive Pulmonary Disease) is having on your wellbeing and daily life.Your answers and test score can be used by you and your healthcare professional to help improve the management of your COPD and gain the greatest benefit from the treatment.[BR]
+  此问卷将协助您以及您的专业医疗照护人员，评量慢性双重性肺病（COPD，慢性阻塞性肺疾病）对于您的健康与日常生活的影响。 医疗照护人员处理您的慢性双重性肺病，从治疗中获得最大的利益。
+
+field: understand
+
+---
+mandatory: True
+
+question: |
+  I never cough 我从不咳嗽 = 0[BR]
+  I cough all the time 我一直在咳嗽 = 5
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: one
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+
+---
+mandatory: True
+
+question: |
+  I have no phlegm (mucous) on my chest at all 我胸腔里一点痰也没有 = 0[BR]
+  My chest is full of phlegm (mucus) 我胸腔里有很多很多痰 =5
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: two
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+
+--- 
+mandatory: True
+
+question: |
+  My chest does not feel tight at all 我一点也没有胸闷的感觉 = 0[BR]
+  My chest feels very tight 我胸闷的感觉很严重 = 5
+
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: three
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  When I walk up a hill or a flight of stairs I am not out of breath 当我在爬坡或爬一层楼梯时，我并不感觉喘不过气来 = 0[BR]
+  When I walk up a hill or a flight of stairs I am completely out of breath 当我在爬坡或爬一层楼梯时，我感觉非常喘不过气来 = 5
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: four
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  I am not limited to doing any activities at home 我的居家活动不会受到限制 = 0[BR]
+  I am completely limited to doing all activities at home 我的居家活动受到很大的限制 = 5
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: five
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  I am confident leaving my home despite my lung condition 尽管我有肺部疾病， 我还是有信心外出 = 0[BR]
+  I am not confident leaving my home at all because of my lung condition 因为我的肺部疾病， 我完全没有信心外出 = 5
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: six
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  I sleep soundly 我睡得安稳 = 0[BR]
+  I do not sleep soundly because of my lung condition 因为我的肺部疾病， 我睡得不安稳 = 5
+
+
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: seven
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+ 
+---
+mandatory: True
+
+question: |
+  I have lots of energy 我活力旺盛 = 0[BR]
+  I have no energy at all 我一点活力都没有 = 5
+
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: eight
+    input type: radio
+    choices:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      
+back button: True     
+ 
+---
+code: |
+  q1= int(one)
+  q2= int(two)
+  q3= int(three)
+  q4= int(four)
+  q5= int(five)
+  q6= int(six)
+  q7= int(seven)
+  q8 = int(eight)
+  total = q1+q2+q3+q4+q5+q6+q7+q8
+  if total <= 5:
+    level = 'Normal'
+    clinical = 'Upper limit of normal in healthy non-smokers'
+  elif total <= 9:
+    level = 'Low'
+    recommendation = '1.smoking cessation 2.annual flu imm 3.reduce exposure to exacerbation risk factors 4.Therapy as warranted'
+    clinical = 'Most days are good, but COPD causes a few problems and stops people doing one or two things that they would like to do. They usually cough several days a week and get breathless when playing sports and games and when carrying heavy loads. They have to slow down or stop when walking up hills or if they hurry when walking on level ground.They get exhausted easily.'
+  elif total <= 20:
+    level = 'Medium'
+    recommendation = '1.Review maintenance therapy 2.referral pulm rehab 3.minimise and manage exacerbation 4.still smoking?'
+    clinical = 'COPD is one of the most important problems that they have. They have a few good days a week, but cough up sputum on most days and have one or two exacerbations a year. They are breathless on most days and usually wake up with chest tightness or wheeze. They get breathless on bending over and can only walk up a flight of stairs slowly. They either do their housework slowly or have to stop for rests.'
+  elif total <= 30:
+    level = 'High'
+    recommendation = '1.Referral specialist care 2.additional pharmacological treatment 3.pulmonary rehab 4.minimise and manage exacerbation'
+    clinical ='COPD stops them doing most things that they want to do. They are breathless walking around the home and when getting washed or dressed. They may be breathless when they talk. Their cough makes them tired and their chest symptoms disturb their sleep on most nights. They feel that exercise is not safe for them and everything they do seems too much effort. They are afraid and panic and do not feel in control of their chest problem'
+  else:
+    level = 'Very High'
+    recommendation = '1.Referral specialist care 2.additional pharmacological treatment 3.pulmonary rehab 4.minimise and manage exacerbation'
+    clinical = 'Their condition stops them doing everything they want to do and they never have any good days. If they can manage to take a bath or shower, it takes them a long time. They cannot go out of the house for shopping or recreation, ordo their housework. Often, they cannot go far from their bed or chair. They feel as if they have become an invalid.'
+  
+  
+---
+mandatory: True
+question: |
+  Total Score = ${total}[BR]
+  Impact level = ${level}
+subquestion: |
+  **Clinical symptoms**[BR]
+  ${clinical}
+  
+  **Recommendations:**[BR]
+  ${recommendation}
+  
+  
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+
