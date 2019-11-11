@@ -1,0 +1,179 @@
+---
+metadata:
+  title: Epworth sleep score
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  How likely are you to doze off or fall asleep in the following situations, in contrast to feeling just tired? This refers to your usual way of life in recent times.[BR] 
+  你曾否在以下的活动中出现打瞌睡或睡着的情況而不仅仅是感到累？可能你最近沒有进行某些活动，你可就以往的表现來作出评估，在下表中选择最符合的选项。
+
+field: understand
+
+
+---
+mandatory: True
+
+question: |
+  Sitting and reading[BR]坐着阅读
+subquestion: |
+  
+fields:
+  - Please choose 请选择: one
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True     
+
+---
+mandatory: True
+
+question: |
+  Watching TV[BR]看电视
+subquestion: |
+  
+fields:
+  - Please choose 请选择: two
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True    
+---
+mandatory: True
+
+question: |
+ Sitting , inactive in a public place (e.g. a theatre or  a meeting)[BR]
+ 在公共场所坐下（如戏院或会议中）
+subquestion: |
+  
+fields:
+  - Please choose 请选择: three
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True   
+---
+mandatory: True
+
+question: |
+ As a passenger in a car foran hour without a break[BR]
+ 坐车一小时中间未间断
+subquestion: |
+  
+fields:
+  - Please choose 请选择: four
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True   
+---
+mandatory: True
+
+question: |
+ Lying down to rest  in the afternoonwhen circumstances permit
+ [BR]于环境许可时躺下休息
+subquestion: |
+  
+fields:
+  - Please choose 请选择: five
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True  
+---
+mandatory: True
+
+question: |
+ Sitting and talking to someone[BR]
+ 坐着和别人交谈
+subquestion: |
+  
+fields:
+  - Please choose 请选择: six
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True  
+---
+mandatory: True
+
+question: |
+ Sitting quietly after a lunch without alcohol[BR]
+ 午餐后坐下休息（没有喝酒的情況下
+subquestion: |
+  
+fields:
+  - Please choose 请选择: seven
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True  
+---
+mandatory: True
+
+question: |
+ In car, while stopped for afew minutes in the traffic[BR]
+ 乘车或驾车时遇上停车等候
+subquestion: |
+  
+fields:
+  - Please choose 请选择: eight
+    input type: radio
+    choices:
+      - would never doze 未曾发生瞌睡: 0
+      - slght chance of dozing 很少机会瞌睡: 1
+      - moderate chance of dozing 中等机会瞌睡: 2
+      - high chance of dozing 很大机会瞌睡: 3
+      
+back button: True  
+---
+
+code: |
+  q1= int(one)
+  q2= int(two)
+  q3= int(three)
+  q4= int(four)
+  q5= int(five)
+  q6= int(six)
+  q7= int(seven)
+  q8= int(eight)
+---
+mandatory: True
+question: |
+  Total Score = ${q1+q2+q3+q4+q5+q6+q7+q8}
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+

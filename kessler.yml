@@ -1,0 +1,241 @@
+---
+metadata:
+  title: kessler 10
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  These questions concern how you have been feeling over the past 30 days. Tick a box below for each question that best represents how you have been.[BR]
+  以下十个问题是有关你在过去四个星期內的感觉。选择每题中最能描述你所感受时间多久的一个答案，并在相关选项下的圆圈划上记号。
+
+field: understand
+
+---
+mandatory: True
+
+question: |
+  About how often did you feel tired out for no good reason?
+  [BR]无缘无故地感觉筋疲力尽？
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: one
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+
+---
+mandatory: True
+
+question: |
+  About how often did you feel tired out for no good reason?
+  [BR]感觉紧张?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: two
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+
+--- 
+mandatory: True
+
+question: |
+  About how often did you feel so nervous that nothing could calm you down?
+  [BR]感觉紧张,而且没有任何方法可以使你冷静下来?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: three
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel hopeless?
+  [BR]感觉绝望?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: four
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel restless or fidgety?
+  [BR]感觉焦躁不安或坐立不安?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: five
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel so restless you could not sit still?
+  [BR]感觉焦躁不安,以致你不能静坐?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: six
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel depressed?
+  [BR]感覺抑鬱?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: seven
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel that everything was an effort?
+  [BR]感觉做什么都是那么吃力的?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: eight
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel so sad that nothing could cheer you up?
+  [BR]感觉那么悲伤,以致没有任何方法可以使你振奋起来?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: nine
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+mandatory: True
+
+question: |
+  About how often did you feel worthless?
+  [BR]感觉自己不中用?
+subquestion: |
+  
+fields:
+  - Please choose[BR]请选择: ten
+    input type: radio
+    choices:
+      - none of the time 绝对没有: 1
+      - a little of the time 偶尔如此: 2
+      - some of the time 有时如此: 3
+      - most of the time 大部份时间如此: 4
+      - all of the time 所有时间: 5
+      
+back button: True     
+---
+code: |
+  q1= int(one)
+  q2= int(two)
+  q3= int(three)
+  q4= int(four)
+  q5= int(five)
+  q6= int(six)
+  q7= int(seven)
+  q8= int(eight)
+  q9= int(nine)
+  q10= int(ten)
+  total = q1+q2+q3+q4+q5+q6+q7+q8+q9+q10
+  if total <= 19:
+    level = 'Low'
+  elif total <= 24:
+    level = 'Mild'
+  elif total <= 29:
+    level = 'Moderate'
+  else:
+    level = 'Severe'
+  
+  
+---
+mandatory: True
+question: |
+  Total Score = ${total}[BR]
+  Level of distress = ${level}
+  
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+
