@@ -1,0 +1,104 @@
+---
+metadata:
+  title: Crockcroft-Gault formula
+  short title: 
+  comment: 
+---
+
+mandatory: True
+
+question: |
+  
+subquestion: |
+  
+fields:
+  - Gender: gender
+    input type: radio
+    choices:
+      - Male: 1
+      - Female: 2
+
+
+---
+mandatory: True
+
+question: |
+
+fields:
+  - Age: age
+    datatype: number
+  - Weight in kg: mass
+    datatype: number
+  - creatinine: cr
+    datatype: number
+      
+back button: True    
+---
+code: |
+  if gender == '1':
+    crcl = (140-age)*mass*1.23/cr
+  else:
+    crcl = (140-age)*mass*1.04/cr
+
+---
+mandatory: True
+
+question: |
+  creatinine clearance = ${crcl} ml/min[BR]
+  % if crcl <10:
+  Severe renal impairment
+  % elif crcl <=20:
+  Moderate renal impairment
+  % elif crcl <=50:
+  Mild renal impairment
+  % endif
+subquestion: |
+ 
+  
+  % if crcl <10:
+  Colchicine  = Avoid[BR]
+  Allopurinol dose = 100mg alternate days (max 100mg daily)[BR]
+  % elif crcl<=20:
+  Allopurinol dose= 100-200mg daily
+  % endif
+  
+  % if crcl <15:
+    Metformin = Avoid[BR]    
+  % elif crcl<=30:
+    Metformin dose = max 500mg daily[BR]
+  % elif crcl <=60:
+    Metformin dose = max 1000mg daily
+  % endif
+  
+  % if crcl <=50:
+   Vildagliptin = 75mg once daily
+  % endif
+
+  % if crcl <60:
+    Bezafibrate = Avoid
+  % endif
+
+  % if crcl <15:
+    Cotrimoxazole = Avoid
+  % elif crcl <30:
+    Cotrimoxazole = Use half normal dose
+  % endif
+  
+  % if crcl <30:
+    Dabigatran = Avoid[BR]
+    Simvastatin = doses above 10mg dialy should be used with caution.
+  % elif crcl <=50:
+    Dabigatran = 110mg bd
+   % endif
+   
+   % if crcl <10:
+    Venlafaxine = Avoid
+   % elif crcl <30:
+   Venlafaxine = use half normal dose
+   % endif
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+
