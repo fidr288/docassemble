@@ -16,26 +16,31 @@ fields:
 mandatory: True
 
 question: |
-  Please read this information carefully.
+  Please read this information carefully.[BR]请仔细阅读以下讯息
 subquestion: |
   Cryotherapy is a treatment using liquid nitrogen to remove precancers, skin tags, warts, seborrheic keratosis, and skin growths by freezing them.  Sometimes it can take 2-3 treatments before it clears.
+  [BR]冷冻治疗是透过液态氮的极低温度去除前期细胞癌, 皮肤息肉, 病毒疣, 脂漏性角化症 (俗称老人斑) 和皮肤增生. 大约需要2至3次或以上直到完全去除.
   
-  **What to expect**
+  **What to expect**[BR]冷冻疗法须知:
   
-  Liquid nitrogen is extremely cold.  When sprayed on the skin the top skin layer rapidly freezes.  When you leave the clinic, the freezing site will probably be red and swollen, and it may sting and itch as it thaws.  Expect the site to feel like a bug bite.  It may look worse over the next few days before it gets better.  Swelling and/or blistering often develop within day after treatment.  2-3 days after treatment a scab will probably form which will then take 7-10 days to fall off, leaving a pink smooth area
+  Liquid nitrogen is extremely cold.  When sprayed on the skin the top skin layer rapidly freezes.  When you leave the clinic, the freezing site will probably be red and swollen, and it may sting and itch as it thaws.  Expect the site to feel like a bug bite.  It may look worse over the next few days before it gets better.  Swelling and/or blistering often develop within day after treatment.  2-3 days after treatment a scab will probably form which will then take 7-10 days to fall off, leaving a pink smooth area[BR]
+  液态氮的温度非常低. 当接触皮肤时, 上层的皮肤会快速的冰冻. 当您离开诊所时, 治疗的部位在解冻后可能会红肿, 刺痛或者发痒. 可能会感觉像蚊虫叮咬. 在治疗部位改善前, 皮肤可能会呈现比原本的样子更糟的情况. 在治疗后的24小时内,治疗部位可能会肿胀及起水泡. 在治疗后的2-3天, 治疗部位可能会结痂并在7-10天后脱落, 呈现一个粉红色平滑的皮肤.
 field: read_complications
 ---
 mandatory: True
 
 question: |
-  Possible complications / experience:
+  Possible complications / experience:[BR]可能会出现的并发症/副作用:
 subquestion: |
-  * There may be pain while the liquid nitrogen is applied and afterwards.
-  * The treated skin may become red and swollen.
-  * You may develop a blister (common), scar (rare), or a non-healing sore at a treatment area like the lower legs.
-  * Cryotherapy may cause your treated skin to lighten as it can damage pigment cells, leave a white spot.  It can also darken, leave a dark spot, if you have dark skin or get excessive sun to the area while healing. 
+  * There may be pain while the liquid nitrogen is applied and afterwards.[BR]治疗过程中或结束后, 可能会造成疼痛. 
+  * The treated skin may become red and swollen.[BR]治疗部位可能会红肿.
+  * You may develop a blister (common), scar (rare), or a non-healing sore at a treatment area like the lower legs.[BR]可能会起水泡(常见反应), 形成疤痕 (较为少见), 或者会在治疗位置如小腿处, 留下难以愈合的溃疡.
+  * Cryotherapy may cause your treated skin to lighten as it can damage pigment cells, leave a white spot.  It can also darken, leave a dark spot, if you have dark skin or get excessive sun to the area while healing.[BR]冷冻疗法可能会造成色素细胞损伤, 使治疗部位呈现较淡的颜色, 或形成一个白色疤痕. 如肤色较深的人, 或在愈合时过多暴露在阳光下的话, 可能会形成深色疤痕.
+  * You will need to rest for 2-3 weeks if re-treatment is required.[BR]若需重複治療, 一般建議相隔2-3週
+  * The treated area may become infected requiring medications.[BR]治療部位可能會受到感染, 需要後續治療.
   
   If there is anything you do not understand please ask the Doctor or Nurse.
+  [BR]如有任何疑問, 請諮詢醫生或護士.
 
 
 field: read_conditions
@@ -44,6 +49,7 @@ mandatory: True
 
 question: |
   Having read the information provided, and having it explained to me, I consent to receive cryotherapy.
+  [BR]在讀完上述訊息, 並聽從解釋後, 我同意進行冷凍療法
 fields:
   - I agree: agrees_to_tos
     datatype: yesnowide
@@ -104,6 +110,8 @@ attachment:
      * The treated skin may become red and swollen.
      * You may develop a blister (common), scar (rare), or a non-healing sore at a treatment area like the lower legs.
      * Cryotherapy may cause your treated skin to lighten as it can damage pigment cells, leave a white spot.  It can also darken, leave a dark spot, if you have dark skin or get excessive sun to the area while healing. 
+     * You will need to rest for 2-3 weeks if re-treatment is required.
+     * The treated area may become infected requiring medications.
      
      If there is anything you do not understand please ask the Doctor or Nurse.
      
