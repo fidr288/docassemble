@@ -1,0 +1,78 @@
+metadata:
+  title: visa details
+  short title: 
+  comment: visa details
+---
+mandatory: True
+
+question: |
+  Details
+fields:
+  - Surname : surname
+  - Name : name
+  - birthday: birthday
+    datatype: date 
+
+
+---
+code: |
+  dob = format_date(birthday, format='dd-MM-yyyy')
+
+---
+mandatory: True
+
+question: |
+ Staff take picture of passport with photo
+fields:
+  - Picture: passport
+    datatype: environment
+---
+mandatory: True
+
+question: |
+ Staff take picture of visa
+fields:
+  - Picture: visa
+    datatype: environment
+
+---
+mandatory: True
+
+attachment:
+  - name: visa details
+    filename: ${surname}-${name}-${dob}-visa
+    variable name: doc
+    content: |     
+
+     ${passport}
+     [PAGEBREAK]
+     ${visa}
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+   sent
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+  visa copy ${surname} ${name}
+content: |
+  
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---

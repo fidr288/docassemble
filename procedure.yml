@@ -1,0 +1,144 @@
+---
+metadata:
+  title: minor procedure
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Name
+fields:
+  - Surname: surname
+  - Name: name
+  
+---
+mandatory: True
+
+question: |
+  Proposed procedure
+subquestion: |
+
+fields: 
+  - procedure: procedure
+  
+---
+mandatory: True
+
+question: |
+  
+subquestion: |
+  * I understand that this procedure is voluntary
+  * I also understand that some local anaesthetic may be used, but I may still feel some pain during and after the procedure.
+  * Other risks may include bleeding, bruising, scarring or infection.
+  * There may be other risks or things for me to consider before agreeing to have this procedure done that have been discussed with me.
+  * I understand that I may choose not to have this procedure done
+  
+  
+  If there is anything you do not understand please ask the Doctor.
+  [BR]如有任何疑問, 請諮詢醫生.
+
+
+field: read_conditions
+---
+mandatory: True
+
+question: |
+  I have discussed the risks, benefits and other options with my health care provider and all of my questions have been answered. 
+fields:
+  - I agree: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you agree.")
+
+---
+mandatory: True
+question: |
+  By signing this form, I acknowledge that I understand the risks, benefits and alternatives of the minor surgical procedure I am requesting.
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff responsible for consent
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+      - Celia Xiao
+      - Andy Watt
+      - Haida Leung
+ 
+---
+
+attachment:
+    filename: ${surname}-${name}-consent-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |  
+     [BORDER]
+     Information and Consent for ${procedure}
+     
+     * I understand that this procedure is voluntary
+     * I also understand that some local anaesthetic may be used, but I may still feel some pain during and after the procedure.
+     * Other risks may include bleeding, bruising, scarring or infection.
+     * There may be other risks or things for me to consider before agreeing to have this procedure done that have been discussed with me.
+     * I understand that I may choose not to have this procedure done
+      
+      ---
+      
+      I have discussed the risks, benefits and other options with my health care provider and all of my questions have been answered. 
+      
+      By signing this form, I acknowledge that I understand the risks, benefits and alternatives of the minor surgical procedure I am requesting
+     
+      
+            
+     ${signature}
+      
+     Signature
+     
+     Name:${name}  ${surname} [BR]
+     ${today()}
+      
+     Staff responsible for consent: ${staff}
+     
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Ask reception to attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart
+---
+template: hello_email
+subject: |
+   ${surname} ${name} minor surgery consent form 
+content: |
+  Download and attach to  ${surname} ${name} file
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---

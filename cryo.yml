@@ -90,7 +90,7 @@ fields:
 ---
 
 attachment:
-    filename: ${surname}-${name}-syring_consent_eng-${format_date(today(), format='dd-MM-yyyy')}
+    filename: ${surname}-${name}-liqn2-consent-${format_date(today(), format='dd-MM-yyyy')}
     variable name: doc
     content: |  
      [BORDER]
