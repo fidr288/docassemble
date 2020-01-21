@@ -1,0 +1,49 @@
+metadata:
+  title: Default playground interview
+  short title: Test
+  comment: This is a learning tool.  Feel free to write over it.
+---
+objects:
+  - user: Individual
+
+---
+mandatory: True
+question: |
+  What is your birthday 生日
+subquestion: |
+  
+fields:
+  - no label: user.birthdate
+    datatype: date
+
+back button: True
+---
+code: |
+  dob = format_date(user.birthdate, format='dd-MM-yyyy')
+---
+code: |
+  if user.age_in_years() <16:
+question: |
+  Name of signatory if applicant is under 16
+  
+  签字人姓名(如果申请人未满16岁)
+fields:
+  - Name: auth_name
+
+  - Relationship 关系: auth_relationship
+
+---
+mandatory: True
+question: Your document is ready.
+attachment:
+  - name: DMC enrolment form
+    filename: file
+    description: |
+     DMC enrolment form
+    content: |
+
+      
+      You are ${ user.age_in_years() }
+      ${dob}
+
+      

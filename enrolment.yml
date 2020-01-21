@@ -328,8 +328,8 @@ question: |
 
 subquestion: |
    I am entitled to enrol because I am residing permanently in New Zealand[BR]
-   *The definition of residing permanently in NZ is that you intended to be a resident in New Zealand for at least 182 days in the next 12 months.*[BR]
-   [BR]我有权利注册因为我在新西兰长期居住. 长期居住的定义为在往后的12个月里,至少有182天居住在新西兰。
+   *The definition of residing permanently in NZ is that you intended to be a resident in New Zealand for at least 183 days in the next 12 months.*[BR]
+   [BR]我有权利注册因为我在新西兰长期居住. 长期居住的定义为在往后的12个月里,至少有183天居住在新西兰。
 fields:
   - yes 是: agrees_reside
     datatype: yesnowide

@@ -219,6 +219,10 @@ subject: |
   Incident form 
 content: |
   Download and fill in register
+  
+  save the form into the incident form folder at: 
+  
+  https://drive.google.com/drive/folders/1NfHsCxeBHOY1l6V4XaeqOMHviQ251zxW?usp=sharing
 ---
 code: |
   variable = 'watch388@gmail.com'

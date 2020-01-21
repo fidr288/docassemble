@@ -28,11 +28,14 @@ mandatory: True
 question: |
   
 subquestion: |
-  * I understand that this procedure is voluntary
-  * I also understand that some local anaesthetic may be used, but I may still feel some pain during and after the procedure.
-  * Other risks may include bleeding, bruising, scarring or infection.
-  * There may be other risks or things for me to consider before agreeing to have this procedure done that have been discussed with me.
-  * I understand that I may choose not to have this procedure done
+  * I understand that this procedure is voluntary[BR]我了解此医疗程序是自愿的
+  * I also understand that some local anaesthetic may be used, but I may still feel some pain during and after the procedure.[BR]
+  我知道会使用局部麻醉剂, 不过过程中或结束后可能还是会感觉到些微疼痛
+  * Other risks may include bleeding, bruising, scarring or infection.[BR]可能有出血, 瘀血, 留疤或感染的风险
+  * There may be other risks or things for me to consider before agreeing to have this procedure done that have been discussed with me.[BR]
+  其他风险或我需要考虑的事情, 在同意进行此医疗程序前已和我讨论过
+  * I understand that I may choose not to have this procedure done[BR]
+  我了解我可以选择不进行此医疗程序
   
   
   If there is anything you do not understand please ask the Doctor.
@@ -44,7 +47,8 @@ field: read_conditions
 mandatory: True
 
 question: |
-  I have discussed the risks, benefits and other options with my health care provider and all of my questions have been answered. 
+  I have discussed the risks, benefits and other options with my health care provider and all of my questions have been answered.[BR]
+  我已经和医护人员讨论过风险, 益处和其他选择, 另外我的所有问题也已经被答覆完
 fields:
   - I agree: agrees_to_tos
     datatype: yesnowide
@@ -55,7 +59,8 @@ validation code: |
 ---
 mandatory: True
 question: |
-  By signing this form, I acknowledge that I understand the risks, benefits and alternatives of the minor surgical procedure I am requesting.
+  By signing this form, I acknowledge that I understand the risks, benefits and alternatives of the minor surgical procedure I am requesting.[BR]
+  通过签署此同意书, 我确认我已了解此小型外科手术的风险, 益处和其他替代方法
   
 subquestion: |
 
