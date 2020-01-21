@@ -8,6 +8,20 @@ objects:
 
 ---
 mandatory: True
+question: |
+
+fields:
+  - Title 稱呼: title
+    input type: radio
+    choices:
+      - Mr
+      - Mrs
+      - Ms
+      - Master
+      - Miss
+      - Dr
+---
+mandatory: True
 
 question: |
   Legal name 合法姓名
@@ -16,7 +30,8 @@ fields:
   - Name 名: name
   - Middle name: middle_name
     required: False
-  
+
+back button: True
 ---
 Mandatory: True
 code: |
@@ -83,7 +98,21 @@ fields:
   - please state: other_gender
 back button: True
 ---
+mandatory: True
+question: |
 
+fields:
+  - Marital status 婚姻狀態: marriage
+    input type: radio
+    choices:
+      - Single 單身
+      - Married 已婚
+      - Divorced 離婚
+      - Widowed 喪偶
+      - Separated 分居
+
+back button: True
+---
 mandatory: True
 
 question: |
@@ -92,7 +121,6 @@ fields:
   - Country of birth 出生国家: place_of_birth
   
 back button: True
-
 ---
 mandatory: True
 question: |
@@ -109,6 +137,7 @@ question: |
 
 fields:
   - Occupation 职业: occupation
+    datatype: text
   
 back button: True
 ---
@@ -462,11 +491,15 @@ attachment:
       
      -----------------------------------------
                   
-     **Surname: ** ${surname}    **Name: ** ${name}  **Middle name:** ${middle_name} **Gender: ** ${gender} **Other gender: **${other_gender}
+     **Title: ** ${title} **Surname: ** ${surname}    **Name: ** ${name}  **Middle name:** ${middle_name} 
+     
+     **Gender: ** ${gender} **Other gender: **${other_gender}
       
      **DOB: ** ${user.birthdate}   **NHI: ** ${nhi} 
      
      **Country of birth: ** ${place_of_birth} **Ethnicity: ** ${ethnicity} **Other ethnicity: **${other_ethnicity} 
+     
+     **Marriage status: ** ${marriage}  **Occupation: ** ${occupation}
      
      **Address: ** ${address}
       
@@ -500,7 +533,7 @@ attachment:
      -----------------------------------------
      
      I am entitled to enrol because I am residing permanently in New Zealand[BR]
-     *The definition of residing permanently in NZ is that you intended to be a resident in New Zealand for at least 182 days in the next 12 months.*[BR]
+     *The definition of residing permanently in NZ is that you intended to be a resident in New Zealand for at least 183 days in the next 12 months.*[BR]
      
      -----------------------------------------
      
