@@ -118,7 +118,8 @@ mandatory: True
 question: |
 
 fields:
-  - Country of birth 出生国家: place_of_birth
+  - Country of birth 出生国家: country_of_birth
+  - Place of Birth 出生地: place_of_birth
   
 back button: True
 ---
@@ -127,6 +128,8 @@ question: |
 
 fields:
   - Address 住家地址: address
+  - Postal address if different from above 收件地址(如和住宅地址不同: postal
+    required: False
 
 back button: True
 
@@ -220,8 +223,9 @@ question: |
 fields:
   - Name 姓名: nok_name
   - Relationship 关系: nok_relationship
-  - Phone电话: nok_phone
+  - Phone 电话: nok_phone
     datatype: integer
+  - Address 地址: nok_address
 
     
 back button: True
@@ -497,11 +501,15 @@ attachment:
       
      **DOB: ** ${user.birthdate}   **NHI: ** ${nhi} 
      
-     **Country of birth: ** ${place_of_birth} **Ethnicity: ** ${ethnicity} **Other ethnicity: **${other_ethnicity} 
+     **Country of birth: ** ${country_of_birth} **Place of birth: ** ${place_of_birth} 
+     
+     **Ethnicity: ** ${ethnicity} **Other ethnicity: **${other_ethnicity} 
      
      **Marriage status: ** ${marriage}  **Occupation: ** ${occupation}
      
      **Address: ** ${address}
+     
+     **Postal address: ** ${postal}
       
      **mobile: **${mobile_phone}    **home: **${home_phone}    **work: **${work_phone}
      
@@ -520,6 +528,8 @@ attachment:
      **Next of kin:**
      
      Name: ${nok_name}  Relationship: ${nok_relationship}  Phone: ${nok_phone}
+     
+     Address: ${nok_address} 
      
      -----------------------------------------
      
