@@ -1,0 +1,382 @@
+---
+metadata:
+  title: UTI standing order
+  short title: 
+  comment: 
+---
+mandatory: True
+
+question: |
+  Patient details
+fields:
+  - Surname: surname
+  - Name: name
+  - NHI: nhi
+  
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - Females over 16?: over_16
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if over_16 == "no":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---    
+mandatory: True
+
+question: |
+  
+fields:
+  - Pregnant over 36 wks: pregnant
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if pregnant == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - fever?: fever
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if fever == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - loin pain: loin
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if loin == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - vomiting: vomit
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if vomit == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - : symptoms
+    input type: radio
+    choices:
+      - dysuria, frequency and positive dipstick for leucocytes.
+      - lab result confirming UTI sensitive to nitrofurantoin.
+      - none
+      
+back button: True
+validation code: |
+  if symptoms == "none":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - more than 2 episodes over the past 6 months: freq
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if freq == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - diabetes: diabetes
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if diabetes == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - Spinal injuries, spina bifida, indwelling catheters?: spine
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if spine == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - egfr over 45 ml/min: egfr
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if egfr == "no":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+
+mandatory: True
+
+question: |
+  
+fields:
+  - Severe liver disease: liver
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if liver == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  
+fields:
+  - Allergic to nitrofurantoin: allergy
+    input type: radio
+    choices:
+      - yes
+      - no
+      
+back button: True
+validation code: |
+  if allergy == "yes":
+    validation_error("CANNOT PROCEED REFER DOCTOR")
+---
+mandatory: True
+
+question: |
+  Prescribe Nitrofurantoin 50mg 4 times daily , for 5 days. (7 days for pregnant women)
+subquestion: |
+  Inform potentional side effects
+  
+  **Common:**
+  
+  * Anorexia
+  * Nausea
+  * Vomiting
+  * Diarrhoea
+  
+  **Severe:**
+  
+  * cholestatic jaundice
+  * hepatitis
+  * rash
+  * pancreatitis
+  * arthralgia. 
+  
+  **Advice**
+  
+  * Return if not improved after 48 hours.
+  * Stop medication and return if a severe side effects
+  
+
+fields:
+  - completed: prescribe
+    datatype: yesnowide
+validation code: |
+  if not prescribe:
+    validation_error("click after prescribed.")
+back button: True
+
+---
+
+mandatory: True
+
+question: |
+  Document in notes
+subquestion: | 
+  * symptoms
+  * Medication given, route, dose, duration
+  * Record the absence of vomiting, high fevers/ rigors, loin pain, vaginal discharge.
+
+ 
+fields:
+  - completed: document
+    datatype: yesnowide
+validation code: |
+  if not document:
+    validation_error("click after documented.")
+back button: True
+
+---
+mandatory: True
+question: |
+  Sign 
+  
+subquestion: |
+
+  
+   
+  
+  
+  
+
+  
+signature: signature
+
+---
+mandatory: True
+question: |
+  Staff 
+fields: 
+  - Staff: staff
+    input type: radio
+    choices:
+      - Annie Lee
+      - Maria Mok
+
+---
+
+attachment:
+    filename: ${surname}-${name}-UTI_treatment-${format_date(today(), format='dd-MM-yyyy')}
+    variable name: doc
+    content: |  
+     [BORDER]
+     UTI standing order
+     
+     ---
+     
+     **Patient details:**
+     
+     Surname: ${surname} Name: ${name} NHI: ${nhi}
+      
+     
+     ---
+     
+     The patient is/has:
+     
+     * Over 16
+     * Not over 36 weeks pregnant
+     * No fever, no loin pain, no vomiting
+     * ${symptoms}
+     * Not more than 2 episodes over UTI over 6 months
+     * No diabetes, severe liver disease, spinal injuries, spina bifida or indwelling catheters
+     * egfr over 45 ml/min
+     * Not allergic to nitrofurantoin
+     
+     ---
+     
+      I have informed the patient of potentional side effects:
+      
+      * Anorexia
+      * Nausea
+      * Vomiting
+      * Diarrhoea
+      
+      I have given the patient the following advice:
+      
+      * Return if not improved after 48 hours.
+      * Stop medication and return if a severe side effects
+     
+     ---
+
+     
+     
+      
+            
+     ${signature}
+      
+     Signature
+     
+     ${staff}
+     
+     ${today()}
+     
+---
+mandatory: True
+question: |
+  Completed. Ask doctor to document that case has been reviewed
+subquestion: |
+  % if success_sending_email:
+  Email sent successfully. Ask reception to attach form to patient file.
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://192.168.0.66:8080/index.html
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+   ${surname} ${name} UTI treatment
+content: |
+  Download and attach to  ${surname} ${name} file
+  http://192.168.0.68/playground_redirect?project=default
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
