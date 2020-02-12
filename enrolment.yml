@@ -197,7 +197,7 @@ fields:
   - : smoke
     input type: radio
     choices:
-      - Never 从来没有
+      - Never (not more than 100 tabacoo cigarettes in your life) 从来没有 (一生中不超过100支香烟)
       - Yes 有
       - Ex-smoker 前吸烟者: ex_smoker
 
