@@ -571,14 +571,15 @@ question: |
   Completed
 subquestion: |
   % if success_sending_email:
-  enrolment completed.
+  enrolment part 1 done, proceed to upload photos. 注册第1部分已完成，请继续上传照片。
+
   % else:
   enrolment failed. please contact clinic
   % endif
 
 buttons:
   - Exit: exit
-    url: http://www.dominionmedical.co.nz/enrol
+    url: https://www.dominionmedical.co.nz/enrol
   - Restart: restart
 
 ---

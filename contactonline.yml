@@ -1,0 +1,57 @@
+metadata:
+  title: online contact
+  short title: 
+  comment: online contact
+
+---
+
+mandatory: True
+
+question: |
+  
+subquestion: |
+  
+fields:
+  - Name[BR]姓名: name
+  - phone[BR]电话: phone
+  - email[BR]电子邮件: email
+    datatype: email
+  - Your message[BR]你的信息: msg
+    input type: area
+    rows: 10
+
+---
+mandatory: True
+question: |
+  
+subquestion: |
+  % if success_sending_email:
+  Successfully sent. We will contact you as soon as possible.[BR]发送成功。 我们会尽快与您联系。。
+  % else:
+  Failed to send. Please phone or email the clinic[BR]发送失败。 请打电话或发电子邮件给诊所诊所。
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://www.dominionmedical.co.nz
+
+---
+template: hello_email
+subject: |
+   Contact from ${name}
+content: |
+   **Name**: ${name} 
+   
+   **Phone**: ${phone} **Email**: ${email}
+   
+   **Message**: ${msg}
+   
+   
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email)
+---
+      

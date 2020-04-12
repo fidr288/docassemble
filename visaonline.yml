@@ -1,0 +1,78 @@
+metadata:
+  title: visa details
+  short title: 
+  comment: visa details
+---
+mandatory: True
+
+question: |
+  Details
+fields:
+  - Name 姓名: name
+  - birthday 出生日期: dob
+---
+
+mandatory: True
+
+question: |
+ Take a picture of Passport photo page[BR]拍下护照照片页
+ ![pw logo](https://www.dominionmedical.co.nz/files/nz_passport.png)
+fields:
+  - Picture: passport
+    datatype: file
+    maximum image size: 1000
+---
+mandatory: True
+
+question: |
+ Take a picture of work or resident visa(take a picture of your passport photo page again if you are a citizen)[BR]拍下工签/居民签证页(如果是公民再拍下护照照片页) 
+ ![visa logo](https://www.dominionmedical.co.nz/files/visa2.jpeg)
+ ![other logo](https://www.dominionmedical.co.nz/files/evisa2.jpeg)
+fields:
+  - Picture: visa
+    datatype: file
+    maximum image size: 1000
+
+---
+mandatory: True
+
+attachment:
+  - name: visa details
+    filename: ${name}-${dob}-documents
+    variable name: doc
+    content: |     
+
+     ${passport}
+     [PAGEBREAK]
+     ${visa}
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+
+ % if success_sending_email:
+   Successfully sent. Call the clinic to confirm your enrolment. 发送成功。致电诊所以确认您的注册。
+
+  % else:
+  Failed to send. Please phone or email the clinic[BR]发送失败。 请打电话或发电子邮件给诊所诊所。
+  % endif
+
+buttons:
+  - Exit: exit
+    url: https://www.dominionmedical.co.nz
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+  Photo documents ${name}
+content: |
+  
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
