@@ -25,7 +25,8 @@ question: |
  Staff take picture of passport with photo
 fields:
   - Picture: passport
-    datatype: environment
+    datatype: file
+    maximum image size: 1000
 ---
 mandatory: True
 
@@ -33,8 +34,8 @@ question: |
  Staff take picture of visa
 fields:
   - Picture: visa
-    datatype: environment
-
+    datatype: file
+    maximum image size: 1000
 ---
 mandatory: True
 
