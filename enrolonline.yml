@@ -580,7 +580,7 @@ subquestion: |
 buttons:
   - Exit: exit
     url: https://www.dominionmedical.co.nz/enrol
-  - Restart: restart
+  
 
 ---
 template: hello_email
