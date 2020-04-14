@@ -10,12 +10,12 @@ mandatory: True
 question: |
   
 subquestion: |
-  * 此服务只适用于诊所注册病人。
-  * 处方需要一个工作日来处理。
-  * 14-17岁收费$8，成人$13，14岁以下免费。自取或送药房一律同价。
   * This service is for registered patients only.
   * Prescriptions will take 1 working day to process.
   * The cost is $8 for 14-17 yrs old, $13 for adults and free for under 14 yrs old regardless of pickup or sending to pharmacy.
+  * 此服务只适用于诊所注册病人。
+  * 处方需要一个工作日来处理。
+  * 14-17岁收费$8，成人$13，14岁以下免费。自取或送药房一律同价。
 
 fields:
   - Surname 姓: surname
