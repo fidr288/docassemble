@@ -1,0 +1,394 @@
+metadata:
+  title: Non resident registration form
+  short title: 
+  comment: non resident registration
+---
+objects:
+  - user: Individual
+---
+mandatory: True
+question: |
+  此表格只适用于非居民[BR]This form is for non residents only
+
+fields:
+  - I understand 我明白: agrees_to_tos
+    datatype: yesnowide
+validation code: |
+  if not agrees_to_tos:
+    validation_error("You cannot continue until you click understand")
+
+  
+---
+mandatory: True
+question: |
+
+fields:
+  - Title 稱呼: title
+    input type: radio
+    choices:
+      - Mr
+      - Mrs
+      - Ms
+      - Master
+      - Miss
+      - Dr
+---
+mandatory: True
+
+question: |
+  Legal name 合法姓名
+fields:
+  - Surname 姓: surname
+  - Name 名: name
+  - Middle name: middle_name
+    required: False
+
+back button: True
+---
+Mandatory: True
+code: |
+  auth_name
+  auth_relationship
+  auth_phone
+---
+mandatory: True
+question: |
+  What is your birthday 生日
+subquestion: |
+  
+fields:
+  birthday 生日: user.birthdate
+  datatype: date
+
+back button: True
+---
+
+code: |
+  auth_name = "n/a"
+  auth_relationship = "n/a"
+  auth_phone = "n/a"
+---
+if: |
+  user.age_in_years() <16
+question: |
+  Name of authorised person as applicant is under 16[BR] 
+  授权人姓名(由于申请人未满16岁)
+fields:
+  - Name 姓名: auth_name
+  - Relationship 关系: auth_relationship
+  - phone 电话: auth_phone
+    datatype: integer
+    
+back button: True
+---
+
+mandatory: True
+code: |
+  other_gender
+---  
+mandatory: True
+question: |
+
+fields:
+  - Gender 性别: gender
+    input type: radio
+    choices:
+      - male 男
+      - female 女
+      - other
+
+back button: True
+---
+code: |
+  other_gender = "n/a"
+---      
+if: |
+  gender == 'other'
+question: |
+  Gender diverse (please state) 性别多样化 (请说明)
+fields:
+  - please state: other_gender
+back button: True
+---
+mandatory: True
+question: |
+
+fields:
+  - Marital status 婚姻狀態: marriage
+    input type: radio
+    choices:
+      - Single 單身
+      - Married 已婚
+      - Divorced 離婚
+      - Widowed 喪偶
+      - Separated 分居
+
+back button: True
+---
+mandatory: True
+
+question: |
+
+fields:
+  - Country of birth 出生国家: country_of_birth
+  - Place of Birth 出生地: place_of_birth
+  
+back button: True
+---
+mandatory: True
+question: |
+
+fields:
+  - Address 住家地址: address
+  - Postal address if different from above 收件地址(如和住宅地址不同: postal
+    required: False
+
+back button: True
+
+---
+mandatory: True
+
+question: |
+
+fields:
+  - Occupation 职业: occupation
+    datatype: text
+  
+back button: True
+---
+mandatory: True
+question: |
+  Contacts 联络资料
+fields:
+  - mobile 手机电话: mobile_phone
+    datatype: integer
+  - home phone 住家电话: home_phone
+    datatype: integer
+    required: False
+  - work phone 工作电话: work_phone
+    datatype: integer
+    required: False
+  - email 电子邮件: email
+    datatype: email
+    
+
+back button: True
+---
+mandatory: True
+question: |
+  Do you agree to receive texts[BR]您是否同意接收手机短信
+fields: 
+  - : agree_txt
+    input type: radio
+    choices:
+      - Yes
+      - No
+
+back button: True
+---
+mandatory: True
+question: |
+  Do you agree to receive emails[BR]您是否同意接收电子邮件
+fields: 
+  - : agree_email
+    input type: radio
+    choices:
+      - Yes
+      - No
+
+back button: True
+---
+mandatory: True
+code: |
+  quit_date
+---
+mandatory: True
+question: |
+  Do you smoke?[BR]吸烟状况
+fields:
+  - : smoke
+    input type: radio
+    choices:
+      - Never (not more than 100 tabacoo cigarettes in your life) 从来没有 (一生中不超过100支香烟)
+      - Yes 有
+      - Ex-smoker 前吸烟者: ex_smoker
+
+back button: True
+---
+code: |
+  quit_date = "n/a"
+---
+if: |
+  smoke == "ex_smoker"
+question: |  
+  quit date 戒烟日期
+fields:
+  - quit date 戒烟日期: quit_date
+    datatype: date
+    
+back button: True
+
+---
+mandatory: True
+question: |
+  Next of kin 紧急联络人
+fields:
+  - Name 姓名: nok_name
+  - Relationship 关系: nok_relationship
+  - Phone 电话: nok_phone
+    datatype: integer
+  - Address 地址: nok_address
+
+    
+back button: True
+---
+
+mandatory: True
+question: |
+  Ethnicty 种族 
+fields: 
+  - Ethnicity: ethnicity
+    input type: radio
+    choices:
+      - NZ european
+      - Maori
+      - Chinese 华人
+      - Samoan
+      - Tongan
+      - Indian
+      - other
+
+
+  - other/additional please state: other_ethnicity
+    required: False
+back button: True
+    
+---
+
+---
+mandatory: True
+question: |
+  Sign your name 签名
+  
+subquestion: |
+
+  
+  
+  
+  
+  
+  
+
+  
+signature: signature
+
+back button: True
+
+
+
+---
+code: |
+  dob = format_date(user.birthdate, format='dd-MM-yyyy')
+
+---
+
+attachment:
+  - name: non-resident registration
+    filename: ${surname}-${name}-${dob}
+    variable name: doc
+    content: |
+     [BORDER]
+     **Dominion Medical Centre non-resident registration form**[BR] 
+     349 Mt Albert Rd, Mt Roskill, Auckland 1041.[BR]
+     ph:6204986,fax:6201349, email: contact@dominionmedical.co.nz EDI: dommcmtr [BR]
+     **GP2GP**[BR]
+     Dr Haida Leung NZMC 28817[BR]
+     Dr Andy Watt NZMC 30200[BR]
+     Dr Celia Xiao NZMC 38916[BR]
+     Dr Angie Young NZMC 16599[BR]
+      
+     -----------------------------------------
+                  
+     **Title: ** ${title} **Surname: ** ${surname}    **Name: ** ${name}  **Middle name:** ${middle_name} 
+     
+     **Gender: ** ${gender} **Other gender: **${other_gender}
+      
+     **DOB: ** ${user.birthdate}   
+     
+     **Country of birth: ** ${country_of_birth} **Place of birth: ** ${place_of_birth} 
+     
+     **Ethnicity: ** ${ethnicity} **Other ethnicity: **${other_ethnicity} 
+     
+     **Marriage status: ** ${marriage}  **Occupation: ** ${occupation}
+     
+     **Address: ** ${address}
+     
+     **Postal address: ** ${postal}
+      
+     **mobile: **${mobile_phone}    **home: **${home_phone}    **work: **${work_phone}
+     
+     **email: **${email} 
+     
+     **smoker:** ${smoke}  **quit date:** ${quit_date}
+     
+     **Agrees to receive text:** ${agree_txt}, **Agrees to receive emails:** ${agree_email}
+     
+      
+     -----------------------------------------
+     
+     **Next of kin:**
+     
+     Name: ${nok_name}  Relationship: ${nok_relationship}  Phone: ${nok_phone}
+     
+     Address: ${nok_address} 
+     
+     -----------------------------------------  
+     
+     
+     
+     
+     
+     ${signature}  
+     
+     Signature
+     
+     Name: ${name}  ${surname}
+     
+     ${ today() }
+     
+     -----------------------------
+     
+     **Authority name: ** ${auth_name} **Relationship: ** ${auth_relationship} **Phone: ** ${auth_phone}
+
+     
+---
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  reigstration part 1 done, proceed to upload photos. 登记第1部分已完成，请继续上传照片。
+  
+  % else:
+  registration failed. please contact clinic
+  % endif
+
+buttons:
+  - Exit: exit
+    url: https://www.dominionmedical.co.nz/nonres.html
+  
+
+---
+template: hello_email
+subject: |
+   ${surname} ${name} non-resident registration form 
+content: |
+  Download and attach to  ${surname} ${name} file. Remember to also scan patient passport
+  
+
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
+      

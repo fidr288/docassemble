@@ -4,22 +4,41 @@ metadata:
   comment: online contact
 
 ---
-
 mandatory: True
 
 question: |
   
 subquestion: |
-  
+
 fields:
   - Name[BR]姓名: name
   - phone[BR]电话: phone
   - email[BR]电子邮件: email
     datatype: email
+    required: False
   - Your message[BR]你的信息: msg
     input type: area
     rows: 6
+  - upload photo(optional).[BR]Click "Browse" to take a photo directly from your phone.[BR]上传图片(可选的)。[BR]点击"Browse"并可以直接通过手机拍照。: photo
+    datatype: file
+    maximum image size: 1000
+    required: False
+  - upload photo(optional)[BR]上传图片(可选的): photo2
+    datatype: file
+    maximum image size: 1000
+    required: False
+---
+mandatory: True
 
+attachment:
+  - name: uploaded photos
+    filename: ${name}-uploaded-photo
+    variable name: doc
+    content: |     
+
+     ${photo}
+     [PAGEBREAK]
+     ${photo2}
 ---
 mandatory: True
 question: |
@@ -46,12 +65,12 @@ content: |
    
    **Message**: ${msg}
    
-   
   
 
 ---
 code: |
+
   variable = 'contact@dominionmedical.co.nz'
-  success_sending_email=send_email(to=[variable], template=hello_email)
+  success_sending_email=send_email(to=[variable],template=hello_email,attachments=[doc])
 ---
       

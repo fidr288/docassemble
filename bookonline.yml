@@ -1,0 +1,87 @@
+metadata:
+  title: online booking
+  short title: 
+  comment: online booking
+
+---
+mandatory: True
+
+question: |
+  
+subquestion: |
+  * Doctor bookings are for telephone consults only. 
+  * Please use live-chat or phone if you need same day appointment. 
+  * Bookings are processed during working hours only. 
+  * We will confirm your appointment via text or email. 
+  * Please don't come in before receving a confirmation. 
+  * 医生预约只适用于电话会诊。
+  * 如果需要当天会诊，请使用实时聊天或打电话预约。
+  * 预约表只会在工作时间内处理。
+  * 我们会通过短信或电子邮件确认您的会诊时间。 
+  * 请在收到确认之前不要来。
+fields:
+  - Name[BR]姓名: name
+  - Date of birth[BR]出生日期: dob
+  - phone[BR]电话: phone
+  - email[BR]电子邮件: email
+    datatype: email
+  - Who you want to see[BR]想看哪一位医生/护士: staff
+    input type: radio
+    choices:
+      - Nurse 护士[BR]Mon-Fri 9am-1pm,2pm-5pm: nurse
+      - Dr Andy Watt 屈医生[BR]Mon-Fri 9am-1pm,2pm-5pm: Andy Watt
+      - Dr Haida Leung 梁医生[BR]Mon-Fri 9am-1pm,2pm-5pm: Haida Leung
+      - Dr Celia Xiao 萧医生[BR]Mon,Tue,Thur,Fri 9am-1pm,2pm-5pm: Celia Xiao
+      - Dr Angie Young 杨医生[BR]Mon,Thurs 9am-1pm: Angie Young
+  - Preferred date[BR]首选日期: date
+  - Preferred time[BR]首选时间: time
+  - Reason for consult[BR]会诊原因: msg
+    input type: area
+    rows: 3
+
+---
+mandatory: True
+question: |
+  
+subquestion: |
+  % if success_sending_email:
+  * Successfully sent. We will confirm your appointment via text or email. Please don't come in before receving a confirmation. 
+  * 发送成功。我们会通过短信或电子邮件确认您的会诊时间。 请在收到确认之前不要来。
+  % else:
+  Failed to send. Please phone or email the clinic[BR]发送失败。 请打电话或发电子邮件给诊所诊所。
+  % endif
+
+buttons:
+  - Exit: exit
+    url: http://www.dominionmedical.co.nz
+
+---
+template: hello_email
+subject: |
+   booking requesting from ${name}
+content: |
+   **Name**: ${name}   
+   
+   **DOB**: ${dob}
+   
+   **Phone**: ${phone}   
+   
+   **Email**: ${email}
+   
+   **Requests to see**: ${staff}
+   
+   **Preferred date**: ${date}    
+   
+   **Preferred time**: ${time}
+   
+   **Reason for consult**: ${msg}
+   
+   ###**Remember to confirm appointment with the patient via phone, text or email**
+
+---
+code: |
+
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable],template=hello_email)
+---
+      

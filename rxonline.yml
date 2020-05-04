@@ -37,8 +37,10 @@ subquestion: |
   % if success_sending_email:
   * Request successfully sent
   * We will phone or text the phone number supplied after the prescription is done or if we need more information.
+  * Pay online
   * 发送成功。
   * 处方完成后或需要更多信息时，我们会透过你所提供的电话号码给您发短信或打电话。
+  * 在线支付。
   
   % else:
   Failed to send. please contact clinic[BR]发送失败。 请联系诊所。
@@ -46,12 +48,12 @@ subquestion: |
 
 buttons:
   - Exit: exit
-    url: http://www.dominionmedical.co.nz
+    url: http://www.dominionmedical.co.nz/payment.html
 
 ---
 template: hello_email
 subject: |
-   ${surname} ${name} repeat prescription
+  Repeat prescription ${surname} ${name}
 content: |
    **Surname**: ${surname} **Name**: ${name} **DOB**: ${dob}
    
