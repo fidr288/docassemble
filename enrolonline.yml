@@ -587,7 +587,9 @@ template: hello_email
 subject: |
    ${surname} ${name} enrolment form 
 content: |
-  Download and attach to  ${surname} ${name} file. Remember to also scan patient passport
+  Please make sure that photo documentation has been submitted otherwise it's not valid
+  
+  Download and attach to  ${surname} ${name} file. 
   
 
 ---
