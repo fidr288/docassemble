@@ -140,7 +140,7 @@ subquestion: |
 
 buttons:
   - Exit: exit
-    url: http://192.168.0.66:8080/index.html
+    url: https://fidr288.github.io/dmc-internal/index.html
   - Restart: restart
 ---
 template: hello_email

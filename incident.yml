@@ -211,7 +211,7 @@ subquestion: |
 
 buttons:
   - Exit: exit
-    url: http://192.168.0.66:8080/index.html
+    url: https://fidr288.github.io/dmc-internal/
   - Restart: restart    
 ---
 template: hello_email
@@ -225,6 +225,6 @@ content: |
   https://drive.google.com/drive/folders/1NfHsCxeBHOY1l6V4XaeqOMHviQ251zxW?usp=sharing
 ---
 code: |
-  variable = 'watch388@gmail.com'
+  variable = 'contact@dominionmedical.co.nz'
   success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
 ---

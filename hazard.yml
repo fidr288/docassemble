@@ -1,0 +1,187 @@
+metadata:
+  title: Hazard ID form
+  short title: 
+  comment: dmc hazard id form
+
+---
+mandatory: True
+
+  
+question: |
+  
+fields:
+  - Staff name: name
+  - date: date
+    datatype: date
+  - Role: role
+    required: False
+
+back button: True
+
+---
+mandatory: True
+question: |
+
+fields:
+  - Location of hazard: location
+  - Description of hazard: description
+
+back button: True
+---
+mandatory: True
+question: |
+  Hazard control: what is your suggestion for preventing this hazard from causing harm?
+subquestion: |
+  
+fields:
+  - suggestion: suggestion
+    datatype: area
+
+back button: True
+---
+mandatory: True
+question: |
+  Hazard assessment
+fields:
+  - Is this a significant hazard: significant
+    input type: radio
+    choices:
+      - yes
+      - no
+
+back button: True
+---
+mandatory: True
+question: |
+  Action plan
+fields:
+  - Can you eliminate the hazard: eliminate
+    input type: radio
+    choices:
+      - yes
+      - no
+  - Actions taken: eliminate_action
+    datatype: area
+
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Can you isolate the hazard: isolate
+    input type: radio
+    choices:
+      - yes
+      - no
+  - Actions taken: isolate_action
+    datatype: area
+    
+back button: True
+---
+mandatory: True
+question: |
+  
+fields:
+  - Can you minimise the hazard: minimise
+    input type: radio
+    choices:
+      - yes
+      - no
+  - Actions taken: minimise_action
+    datatype: area
+
+back button: True
+---
+mandatory: True
+
+question: |
+
+fields:
+  - hazard added to register?: add_hazard
+    input type: radio
+    choices:
+      - yes
+      - no
+  
+back button: True
+
+---
+code: |
+  inc_date = format_date(date, format='dd-MM-yyyy')
+---
+attachment:
+  - name: DMC hazard id form
+    filename: hazard_id_form_${inc_date}
+    variable name: doc
+    content: |
+
+     **Dominion Medical Centre hazard id form**[BR] 
+     
+      ----
+      
+     **Staff name**: ${name}  **Date:** ${date}  **Role:** ${role}
+     
+     ---
+
+     **Location of hazard: ** ${location}  **Description of hazard: ** ${description} 
+     
+     **Hazard control: what is your suggestion for preventing this hazard from causing harm?:** 
+     
+     ${suggestion}
+     
+     ---
+     
+     **Is this a significant hazard:** ${significant}
+     
+     ---
+     
+     **Can you eliminate the hazard?:** ${eliminate}
+     
+     **Actions taken:** ${eliminate_action}
+     
+     ---
+     
+     **Can you isolate the hazard?:** ${isolate}
+     
+     **Actions taken:** ${isolate_action}
+     
+     ---
+     **Can you minimise the hazard?:** ${minimise}
+     
+     **Actions taken:** ${minimise_action}
+     
+     ---
+     **hazard added to register?:** ${add_hazard}
+        
+---
+
+mandatory: True
+question: |
+  Completed
+subquestion: |
+  % if success_sending_email:
+  Fill in hazard register, discuss in staff meeting, get H&S officer to sign off
+  % else:
+  Email failed to send. Contact administrator
+  % endif
+
+buttons:
+  - Exit: exit
+    url: https://fidr288.github.io/dmc-internal/index.html
+  - Restart: restart    
+---
+template: hello_email
+subject: |
+  Hazard ID form 
+content: |
+  Download and fill in hazard register
+  
+  save the form into the hazard id form folder at: 
+  
+  https://drive.google.com/drive/folders/1e3lw-V7TEsFHjGq-TW6qc7wcVTcGcFU-?usp=sharing
+---
+code: |
+  variable = 'contact@dominionmedical.co.nz'
+  success_sending_email=send_email(to=[variable], template=hello_email, attachments=[doc])
+---
